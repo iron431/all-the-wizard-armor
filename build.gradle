@@ -122,6 +122,15 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+    maven {
+        url = "https://code.redspace.io/releases"
+    }
+    maven { url = "https://maven.enginehub.org/repo/" }
+    maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
+    maven { url = "https://maven.theillusivec4.top" }
+    maven { url = "https://cursemaven.com" }
+    maven { url = "https://maven.blamejared.com" }
+    maven { url = "https://maven.kosmx.dev/" }
 }
 
 dependencies {
@@ -131,12 +140,33 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.neoforged:forge:${minecraft_version}-${neo_version}"
+    // IRONS SPELLS N SPELLBOOKS **********************************************************************************
+    //compileOnly fg.deobf("io.redspace.ironsspellbooks:irons_spellbooks:${irons_spells_version}:api")
+    compileOnly fg.deobf("io.redspace.ironsspellbooks:irons_spellbooks:${irons_spells_version}")
+    runtimeOnly fg.deobf("io.redspace.ironsspellbooks:irons_spellbooks:${irons_spells_version}")
 
+    // GECKOLIB ***************************************************************************************************
+    compileOnly fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+    runtimeOnly fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+
+    // ALLTHEMODIUM  ***************************************************************************************************
+    compileOnly fg.deobf("curse.maven:allthemodium-${allthemodium_version}")
+    runtimeOnly fg.deobf("curse.maven:allthemodium-${allthemodium_version}")
+    runtimeOnly fg.deobf("curse.maven:ato-${alltheores_version}")
+
+    // CAELUS *****************************************************************************************************
+    runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${caelus_version}")
+
+    // PLAYER ANIMATOR ********************************************************************************************
+    runtimeOnly fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
+
+    // CURIOS *****************************************************************************************************
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
