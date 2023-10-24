@@ -1,14 +1,19 @@
 package io.redspace.allthewizardgear.registry;
 
 import io.redspace.allthewizardgear.AllTheWizardGear;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+@Mod.EventBusSubscriber
 public class CreativeTabRegistry {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AllTheWizardGear.MODID);
 
@@ -20,6 +25,7 @@ public class CreativeTabRegistry {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .title(Component.translatable("tab.allthewizardarmor.armor"))
             .icon(() -> ItemRegistry.UNOBTAINIUM_MAGE_CHESTPLATE.get().getDefaultInstance())
+            .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .displayItems((parameters, output) -> {
                 output.accept(ItemRegistry.ALLTHEMODIUM_MAGE_HELMET.get());
                 output.accept(ItemRegistry.ALLTHEMODIUM_MAGE_CHESTPLATE.get());
@@ -36,5 +42,19 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.UNOBTAINIUM_MAGE_LEGGINGS.get());
                 output.accept(ItemRegistry.UNOBTAINIUM_MAGE_BOOTS.get());
             }).build());
+
+    @SubscribeEvent
+    public static void fillCreativeTab(BuildCreativeModeTabContentsEvent event) {
+        IronsSpellbooks.LOGGER.debug("AllTheWizardGear CreativeTabRegistry fillCreativeTab");
+        if (event.getTabKey() == MOD_ARMOR_TAB.getKey()) {
+            IronsSpellbooks.LOGGER.debug("AllTheWizardGear CreativeTabRegistry fillCreativeTab2");
+//            ItemRegistry.items().forEach(event::accept);
+            ItemRegistry.items().forEach((item) -> {
+                event.accept(item);
+                IronsSpellbooks.LOGGER.debug(item.getKey() + "");
+            });
+        }
+    }
+
 
 }
