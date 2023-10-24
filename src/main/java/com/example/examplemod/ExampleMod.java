@@ -104,8 +104,21 @@ public class ExampleMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EXAMPLE_BLOCK_ITEM);
+        if (event.getTabKey() == EXAMPLE_TAB.getKey()) {
+            event.accept(ItemRegistry.ALLTHEMODIUM_MAGE_HELMET);
+            event.accept(ItemRegistry.ALLTHEMODIUM_MAGE_CHESTPLATE);
+            event.accept(ItemRegistry.ALLTHEMODIUM_MAGE_LEGGINGS);
+            event.accept(ItemRegistry.ALLTHEMODIUM_MAGE_BOOTS);
+
+            event.accept(ItemRegistry.VIBRANIUM_MAGE_HELMET);
+            event.accept(ItemRegistry.VIBRANIUM_MAGE_CHESTPLATE);
+            event.accept(ItemRegistry.VIBRANIUM_MAGE_LEGGINGS);
+            event.accept(ItemRegistry.VIBRANIUM_MAGE_BOOTS);
+
+            event.accept(ItemRegistry.UNOBTAINIUM_MAGE_HELMET);
+            event.accept(ItemRegistry.UNOBTAINIUM_MAGE_CHESTPLATE);
+            event.accept(ItemRegistry.UNOBTAINIUM_MAGE_LEGGINGS);
+            event.accept(ItemRegistry.UNOBTAINIUM_MAGE_BOOTS);
            // event.acceptAll(ItemRegistry.items());
         }
     }
