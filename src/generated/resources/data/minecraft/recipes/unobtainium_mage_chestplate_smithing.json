@@ -4,10 +4,10 @@
     "tag": "forge:ingots/unobtainium"
   },
   "base": {
-    "item": "examplemod:vibranium_mage_chestplate"
+    "item": "allthewizardgear:vibranium_mage_chestplate"
   },
   "result": {
-    "item": "examplemod:unobtainium_mage_chestplate"
+    "item": "allthewizardgear:unobtainium_mage_chestplate"
   },
   "template": {
     "item": "allthemodium:unobtainium_upgrade_smithing_template"

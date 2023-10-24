@@ -4,10 +4,10 @@
     "tag": "forge:ingots/allthemodium"
   },
   "base": {
-    "tag": "examplemod:base_wizard_chestplate"
+    "tag": "allthewizardgear:base_wizard_chestplate"
   },
   "result": {
-    "item": "examplemod:allthemodium_mage_chestplate"
+    "item": "allthewizardgear:allthemodium_mage_chestplate"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"

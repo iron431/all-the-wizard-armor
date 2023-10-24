@@ -4,10 +4,10 @@
     "tag": "forge:ingots/allthemodium"
   },
   "base": {
-    "tag": "examplemod:base_wizard_boots"
+    "tag": "allthewizardgear:base_wizard_boots"
   },
   "result": {
-    "item": "examplemod:allthemodium_mage_boots"
+    "item": "allthewizardgear:allthemodium_mage_boots"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"

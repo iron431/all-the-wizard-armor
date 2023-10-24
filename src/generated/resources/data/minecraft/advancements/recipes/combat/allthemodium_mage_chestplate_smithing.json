@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "examplemod:has_ingots/allthemodium_ingot": {
+    "allthewizardgear:has_ingots/allthemodium_ingot": {
       "conditions": {
         "items": [
           {
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "examplemod:has_ingots/allthemodium_ingot",
+      "allthewizardgear:has_ingots/allthemodium_ingot",
       "has_the_recipe"
     ]
   ],

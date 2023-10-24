@@ -4,10 +4,10 @@
     "tag": "forge:ingots/allthemodium"
   },
   "base": {
-    "tag": "examplemod:base_wizard_leggings"
+    "tag": "allthewizardgear:base_wizard_leggings"
   },
   "result": {
-    "item": "examplemod:allthemodium_mage_leggings"
+    "item": "allthewizardgear:allthemodium_mage_leggings"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"

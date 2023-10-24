@@ -4,10 +4,10 @@
     "tag": "forge:ingots/vibranium"
   },
   "base": {
-    "item": "examplemod:allthemodium_mage_chestplate"
+    "item": "allthewizardgear:allthemodium_mage_chestplate"
   },
   "result": {
-    "item": "examplemod:vibranium_mage_chestplate"
+    "item": "allthewizardgear:vibranium_mage_chestplate"
   },
   "template": {
     "item": "allthemodium:vibranium_upgrade_smithing_template"

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "examplemodhas_ingots/vibranium_ingot": {
+    "allthewizardgearhas_ingots/vibranium_ingot": {
       "conditions": {
         "items": [
           {
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "examplemodhas_ingots/vibranium_ingot",
+      "allthewizardgearhas_ingots/vibranium_ingot",
       "has_the_recipe"
     ]
   ],

@@ -4,10 +4,10 @@
     "tag": "forge:ingots/allthemodium"
   },
   "base": {
-    "tag": "examplemod:base_wizard_helmet"
+    "tag": "allthewizardgear:base_wizard_helmet"
   },
   "result": {
-    "item": "examplemod:allthemodium_mage_helmet"
+    "item": "allthewizardgear:allthemodium_mage_helmet"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"
