@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "allthewizardgearhas_ingots/unobtainium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/unobtainium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:unobtainium_spell_book_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "allthewizardgearhas_ingots/unobtainium_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:unobtainium_spell_book_smithing"
+    ]
+  },
+  "sends_telemetry_event": false
+}
