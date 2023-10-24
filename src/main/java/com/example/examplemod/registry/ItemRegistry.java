@@ -1,7 +1,7 @@
 package com.example.examplemod.registry;
 
 import com.example.examplemod.ExampleMod;
-import com.example.examplemod.datagen.ItemModelDataGenerator;
+import com.example.examplemod.datagen.ModItemModelDataGenerator;
 import com.example.examplemod.item.ExtendedArmorItem;
 import com.example.examplemod.item.ExtendedArmorMaterials;
 import net.minecraft.world.item.ArmorItem;
@@ -39,7 +39,7 @@ public class ItemRegistry {
 
     private static RegistryObject<Item> registerArmorPiece(String name, Supplier<Item> supplier) {
         var s = ITEMS.register(name, supplier);
-        ItemModelDataGenerator.toRegister.add(generator -> generator.simpleItem(s));
+        ModItemModelDataGenerator.toRegister.add(generator -> generator.simpleItem(s));
         return s;
     }
 

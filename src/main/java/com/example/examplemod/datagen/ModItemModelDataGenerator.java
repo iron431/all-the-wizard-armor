@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ItemModelDataGenerator extends ItemModelProvider {
+public class ModItemModelDataGenerator extends ItemModelProvider {
 
-    public static List<Consumer<ItemModelDataGenerator>> toRegister = new ArrayList<>();
+    public static List<Consumer<ModItemModelDataGenerator>> toRegister = new ArrayList<>();
 
-    public ItemModelDataGenerator(PackOutput output, ExistingFileHelper exFileHelper) {
+    public ModItemModelDataGenerator(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, ExampleMod.MODID, exFileHelper);
     }
 
