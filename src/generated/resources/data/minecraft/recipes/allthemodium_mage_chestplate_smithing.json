@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "forge:ingots/allthemodium"
+  },
+  "base": {
+    "tag": "examplemod:base_wizard_chestplate"
+  },
+  "result": {
+    "item": "examplemod:allthemodium_mage_chestplate"
+  },
+  "template": {
+    "item": "allthemodium:allthemodium_upgrade_smithing_template"
+  }
+}

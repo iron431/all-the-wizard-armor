@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "forge:ingots/allthemodium"
+  },
+  "base": {
+    "tag": "examplemod:base_wizard_boots"
+  },
+  "result": {
+    "item": "examplemod:allthemodium_mage_boots"
+  },
+  "template": {
+    "item": "allthemodium:allthemodium_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "forge:ingots/unobtainium"
+  },
+  "base": {
+    "item": "examplemod:vibranium_mage_leggings"
+  },
+  "result": {
+    "item": "examplemod:unobtainium_mage_leggings"
+  },
+  "template": {
+    "item": "allthemodium:unobtainium_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "forge:ingots/vibranium"
+  },
+  "base": {
+    "item": "examplemod:allthemodium_mage_leggings"
+  },
+  "result": {
+    "item": "examplemod:vibranium_mage_leggings"
+  },
+  "template": {
+    "item": "allthemodium:vibranium_upgrade_smithing_template"
+  }
+}
