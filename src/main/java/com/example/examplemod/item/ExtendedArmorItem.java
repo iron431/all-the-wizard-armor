@@ -1,8 +1,10 @@
 package com.example.examplemod.item;
 
+import com.example.examplemod.client.armor.GenericArmorModel;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -14,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -33,7 +36,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-public abstract class ExtendedArmorItem extends ArmorItem implements GeoItem {
+public class ExtendedArmorItem extends ArmorItem implements GeoItem {
     private static final UUID[] ARMOR_MODIFIER_UUID_PER_SLOT = new UUID[]{UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
     private final Multimap<Attribute, AttributeModifier> ARMOR_ATTRIBUTES;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -44,8 +47,8 @@ public abstract class ExtendedArmorItem extends ArmorItem implements GeoItem {
 
 
 
-    public ExtendedArmorItem(ExtendedArmorMaterials material, Type type, Properties settings) {
-        super(material, type, settings);
+    public ExtendedArmorItem(ExtendedArmorMaterials material, Type type) {
+        super(material, type,  new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC));
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         float defense = material.getDefenseForType(type);
         float toughness = material.getToughness();
@@ -168,5 +171,7 @@ public abstract class ExtendedArmorItem extends ArmorItem implements GeoItem {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public abstract GeoArmorRenderer<?> supplyRenderer();
+    public GeoArmorRenderer<?> supplyRenderer(){
+        return new GenericCustomArmorRenderer<>(new GenericArmorModel<>());
+    }
 }

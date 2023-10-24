@@ -2,8 +2,8 @@ package com.example.examplemod.registry;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.datagen.ItemModelDataGenerator;
-import com.example.examplemod.item.AllthemodiumArmorItem;
-import com.example.examplemod.item.UnobtainiumArmorItem;
+import com.example.examplemod.item.ExtendedArmorItem;
+import com.example.examplemod.item.ExtendedArmorMaterials;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Collection;
 import java.util.function.Supplier;
 
 public class ItemRegistry {
@@ -21,19 +22,28 @@ public class ItemRegistry {
     }
 
 
-    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_HELMET = registerArmorPiece("allthemodium_mage_helmet", () -> new AllthemodiumArmorItem(ArmorItem.Type.HELMET));
-    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_CHESTPLATE = registerArmorPiece("allthemodium_mage_chestplate", () -> new AllthemodiumArmorItem(ArmorItem.Type.CHESTPLATE));
-    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_LEGGINGS = registerArmorPiece("allthemodium_mage_leggings", () -> new AllthemodiumArmorItem(ArmorItem.Type.LEGGINGS));
-    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_BOOTS = registerArmorPiece("allthemodium_mage_boots", () -> new AllthemodiumArmorItem(ArmorItem.Type.BOOTS));
+    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_HELMET = registerArmorPiece("allthemodium_mage_helmet", () -> new ExtendedArmorItem(ExtendedArmorMaterials.ALLTHEMODIUM, ArmorItem.Type.HELMET));
+    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_CHESTPLATE = registerArmorPiece("allthemodium_mage_chestplate", () -> new ExtendedArmorItem(ExtendedArmorMaterials.ALLTHEMODIUM, ArmorItem.Type.CHESTPLATE));
+    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_LEGGINGS = registerArmorPiece("allthemodium_mage_leggings", () -> new ExtendedArmorItem(ExtendedArmorMaterials.ALLTHEMODIUM, ArmorItem.Type.LEGGINGS));
+    public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_BOOTS = registerArmorPiece("allthemodium_mage_boots", () -> new ExtendedArmorItem(ExtendedArmorMaterials.ALLTHEMODIUM, ArmorItem.Type.BOOTS));
 
-    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_HELMET = registerArmorPiece("unobtainium_mage_helmet", () -> new UnobtainiumArmorItem(ArmorItem.Type.HELMET));
-    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_CHESTPLATE = registerArmorPiece("unobtainium_mage_chestplate", () -> new UnobtainiumArmorItem(ArmorItem.Type.CHESTPLATE));
-    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_LEGGINGS = registerArmorPiece("unobtainium_mage_leggings", () -> new UnobtainiumArmorItem(ArmorItem.Type.LEGGINGS));
-    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_BOOTS = registerArmorPiece("unobtainium_mage_boots", () -> new UnobtainiumArmorItem(ArmorItem.Type.BOOTS));
+    public static final RegistryObject<Item> VIBRANIUM_MAGE_HELMET = registerArmorPiece("vibranium_mage_helmet", () -> new ExtendedArmorItem(ExtendedArmorMaterials.VIBRANIUM, ArmorItem.Type.HELMET));
+    public static final RegistryObject<Item> VIBRANIUM_MAGE_CHESTPLATE = registerArmorPiece("vibranium_mage_chestplate", () -> new ExtendedArmorItem(ExtendedArmorMaterials.VIBRANIUM, ArmorItem.Type.CHESTPLATE));
+    public static final RegistryObject<Item> VIBRANIUM_MAGE_LEGGINGS = registerArmorPiece("vibranium_mage_leggings", () -> new ExtendedArmorItem(ExtendedArmorMaterials.VIBRANIUM, ArmorItem.Type.LEGGINGS));
+    public static final RegistryObject<Item> VIBRANIUM_MAGE_BOOTS = registerArmorPiece("vibranium_mage_boots", () -> new ExtendedArmorItem(ExtendedArmorMaterials.VIBRANIUM, ArmorItem.Type.BOOTS));
+
+    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_HELMET = registerArmorPiece("unobtainium_mage_helmet", () -> new ExtendedArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.HELMET));
+    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_CHESTPLATE = registerArmorPiece("unobtainium_mage_chestplate", () -> new ExtendedArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.CHESTPLATE));
+    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_LEGGINGS = registerArmorPiece("unobtainium_mage_leggings", () -> new ExtendedArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.LEGGINGS));
+    public static final RegistryObject<Item> UNOBTAINIUM_MAGE_BOOTS = registerArmorPiece("unobtainium_mage_boots", () -> new ExtendedArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.BOOTS));
 
     private static RegistryObject<Item> registerArmorPiece(String name, Supplier<Item> supplier) {
         var s = ITEMS.register(name, supplier);
         ItemModelDataGenerator.toRegister.add(generator -> generator.simpleItem(s));
         return s;
+    }
+
+    public static Collection<RegistryObject<Item>> items(){
+        return ITEMS.getEntries();
     }
 }

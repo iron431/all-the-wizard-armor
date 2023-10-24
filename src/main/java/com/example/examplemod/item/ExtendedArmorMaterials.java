@@ -22,15 +22,15 @@ import java.util.function.Supplier;
 
 public enum ExtendedArmorMaterials implements ArmorMaterial {
 
-    ALLTHEMODIUM("allthemodium", 42, makeArmorMap(4, 9, 7, 4), 85, SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get()), Map.of(
+    ALLTHEMODIUM("allthemodium", 42, makeArmorMap(4, 9, 7, 4), 85, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F, 0.0F, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get()), Map.of(
             AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 200, AttributeModifier.Operation.ADDITION),
             AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .15, AttributeModifier.Operation.MULTIPLY_TOTAL)
     )),
-    VIBRANIUM("vibranium", 62, makeArmorMap(6, 11, 9, 6), 105, SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get()), Map.of(
+    VIBRANIUM("vibranium", 62, makeArmorMap(6, 11, 9, 6), 105, SoundEvents.ARMOR_EQUIP_NETHERITE, 6.0F, 0.0F, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get()), Map.of(
             AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 325, AttributeModifier.Operation.ADDITION),
             AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .25, AttributeModifier.Operation.MULTIPLY_TOTAL)
     )),
-    UNOBTAINIUM("unobtainium", 82, makeArmorMap(8, 13, 11, 8), 125, SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()), Map.of(
+    UNOBTAINIUM("unobtainium", 82, makeArmorMap(8, 13, 11, 8), 125, SoundEvents.ARMOR_EQUIP_NETHERITE, 8.0F, 0.0F, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()), Map.of(
             AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 450, AttributeModifier.Operation.ADDITION),
             AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .4, AttributeModifier.Operation.MULTIPLY_TOTAL)
     ));
