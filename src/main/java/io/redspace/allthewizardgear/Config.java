@@ -21,26 +21,52 @@ public class Config {
     static ForgeConfigSpec SPEC;
 
     public static ArmorSetConfig ALLTHEMODIUM_CONFIG;
+    public static ArmorSetConfig VIBRANIUM_CONFIG;
+    public static ArmorSetConfig UNOBTAINIUM_CONFIG;
 
     static {
-        ALLTHEMODIUM_CONFIG = defineConfig(BUILDER, "allthemodium", List.of(1d, 2d, 4d, 2d), 4, 0, 400, .4);
+        BUILDER.push("ArmorConfig");
+        ALLTHEMODIUM_CONFIG = defineConfig(BUILDER, "allthemodium",
+                List.of(4, 7, 9, 4),
+                4,
+                0,
+                200,
+                .20);
+        VIBRANIUM_CONFIG = defineConfig(BUILDER, "vibranium",
+                List.of(6, 9, 11, 6),
+                5,
+                0,
+                325,
+                .30);
+        UNOBTAINIUM_CONFIG = defineConfig(BUILDER, "unobtainium",
+                List.of(8, 11, 13, 8),
+                6,
+                0,
+                450,
+                .40);
+        BUILDER.pop();
         SPEC = BUILDER.build();
     }
 
-    private static ArmorSetConfig defineConfig(ForgeConfigSpec.Builder builder, String name, List<Double> defenseValues, double toughness, double knockbackResistance, double maxMana, double spellPower) {
-        return new ArmorSetConfig(
-                builder.push(name).worldRestart().defineList("armor values [boots, leggings, chestplate, helmet]", () -> defenseValues, (x) -> true),
-                builder.worldRestart().define("toughness", toughness), builder.define("knockbackResistance", knockbackResistance),
-                builder.worldRestart().define("maxMana", maxMana),
-                builder.worldRestart().define("spellPower", spellPower)
+    private static ArmorSetConfig defineConfig(ForgeConfigSpec.Builder builder, String name, List<Integer> defenseValues, int toughness, double knockbackResistance, int maxMana, double spellPower) {
+        builder.push(name);
+        String localizedName = name.substring(0, 1).toUpperCase() + name.substring(1) + "'s ";
+        var config = new ArmorSetConfig(
+                builder.worldRestart().comment(localizedName + "Armor Values, in the form of [boots, leggings, chestplate, helmet]. Default: " + defenseValues).defineList("armorValues", () -> defenseValues, (x) -> true),
+                builder.worldRestart().comment(localizedName + "Armor Toughness. Default: " + toughness).define("toughness", toughness),
+                builder.worldRestart().comment(localizedName + "Knockback Resistance. Default: " + knockbackResistance).define("knockbackResistance", knockbackResistance),
+                builder.worldRestart().comment(localizedName + "Max Mana. Default: " + maxMana).define("maxMana", maxMana),
+                builder.worldRestart().comment(localizedName + String.format("Spell Power. Default: %s (+%s%%)", spellPower, (int) (spellPower * 100))).define("spellPower", spellPower)
         );
+        builder.pop();
+        return config;
     }
 
     public static record ArmorSetConfig(
-            ForgeConfigSpec.ConfigValue<List<? extends Double>> defenseValues,
-            ForgeConfigSpec.ConfigValue<? extends Double> toughness,
+            ForgeConfigSpec.ConfigValue<List<? extends Integer>> defenseValues,
+            ForgeConfigSpec.ConfigValue<? extends Integer> toughness,
             ForgeConfigSpec.ConfigValue<? extends Double> knockbackResistance,
-            ForgeConfigSpec.ConfigValue<? extends Double> maxMana,
+            ForgeConfigSpec.ConfigValue<? extends Integer> maxMana,
             ForgeConfigSpec.ConfigValue<? extends Double> spellPower
     ) {
         public double getDefenseFor(EquipmentSlot slot) {

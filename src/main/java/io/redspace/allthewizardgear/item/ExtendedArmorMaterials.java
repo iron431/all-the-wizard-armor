@@ -25,26 +25,8 @@ import java.util.function.Supplier;
 public enum ExtendedArmorMaterials implements ArmorMaterial {
     //TODO: come up find finalized set of attributes, and hardcode those
     ALLTHEMODIUM("allthemodium", Config.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
-    VIBRANIUM("vibranium", Config.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
-    UNOBTAINIUM("unobtainium", Config.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get()));
-//    VIBRANIUM("vibranium", 62, makeArmorMap(6, 11, 9, 6), 105, SoundEvents.ARMOR_EQUIP_NETHERITE, 6.0F, 0.0F, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get()), Map.of(
-//            AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 325, AttributeModifier.Operation.ADDITION),
-//            AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .25, AttributeModifier.Operation.MULTIPLY_TOTAL)
-//    )),
-//    UNOBTAINIUM("unobtainium", 82, makeArmorMap(8, 13, 11, 8), 125, SoundEvents.ARMOR_EQUIP_NETHERITE, 8.0F, 0.0F, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()), Map.of(
-//            AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 450, AttributeModifier.Operation.ADDITION),
-//            AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .4, AttributeModifier.Operation.MULTIPLY_TOTAL)
-//    ));
-
-//    ALLTHEMODIUM("allthemodium", 42, new int[]{4, 7, 9, 4}, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, 5.0F, 0.5F, () -> {
-//        return Ingredient.of(new ItemLike[]{(ItemLike) ModRegistry.ALLTHEMODIUM_INGOT.get()});
-//    }),
-//    VIBRANIUM("vibranium", 62, new int[]{6, 9, 11, 6}, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, 9.0F, 0.8F, () -> {
-//        return Ingredient.of(new ItemLike[]{(ItemLike)ModRegistry.VIBRANIUM_INGOT.get()});
-//    }),
-//    UNOBTAINIUM("unobtainium", 82, new int[]{8, 11, 13, 8}, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, 15.0F, 1.0F, () -> {
-//        return Ingredient.of(new ItemLike[]{(ItemLike)ModRegistry.UNOBTAINIUM_INGOT.get()});
-//    });
+    VIBRANIUM("vibranium", Config.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
+    UNOBTAINIUM("unobtainium", Config.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;
