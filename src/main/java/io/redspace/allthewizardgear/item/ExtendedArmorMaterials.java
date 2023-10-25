@@ -77,19 +77,19 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
         double knockbackResistance = this.config.knockbackResistance().get();
         double mana = this.config.maxMana().get();
         double power = this.config.spellPower().get();
-        if (defense > 0) {
+        if (defense != 0) {
             builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", defense, AttributeModifier.Operation.ADDITION));
         }
-        if (toughness > 0) {
+        if (toughness != 0) {
             builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor toughness", toughness, AttributeModifier.Operation.ADDITION));
         }
-        if (knockbackResistance > 0) {
+        if (knockbackResistance != 0) {
             builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "Armor  knockback resistance", knockbackResistance, AttributeModifier.Operation.ADDITION));
         }
-        if (mana > 0) {
+        if (mana != 0) {
             builder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier(uuid, "Armor mana", mana, AttributeModifier.Operation.ADDITION));
         }
-        if (power > 0) {
+        if (power != 0) {
             builder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier(uuid, "Armor spell power", power, AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
 
