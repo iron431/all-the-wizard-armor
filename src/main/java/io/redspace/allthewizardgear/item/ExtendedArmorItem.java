@@ -10,7 +10,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
@@ -37,7 +36,6 @@ import java.util.function.Consumer;
 
 public class ExtendedArmorItem extends ArmorItem implements GeoItem {
     private static final UUID[] ARMOR_MODIFIER_UUID_PER_SLOT = new UUID[]{UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
-    private final Multimap<Attribute, AttributeModifier> ARMOR_ATTRIBUTES;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
@@ -45,34 +43,18 @@ public class ExtendedArmorItem extends ArmorItem implements GeoItem {
     //.put(ModArmorMaterials., new MobEffectInstance(MobEffects.LUCK, 200, 1)).build();
 
 
+    //Shadowing
+    private final ExtendedArmorMaterials material;
 
     public ExtendedArmorItem(ExtendedArmorMaterials material, Type type) {
-        super(material, type,  new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC));
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        float defense = material.getDefenseForType(type);
-        float toughness = material.getToughness();
-        float knockbackResistance = material.getKnockbackResistance();
-        UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[type.getSlot().getIndex()];
-        builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", defense, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor toughness", toughness, AttributeModifier.Operation.ADDITION));
-        if (knockbackResistance > 0) {
-            builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "Armor knockback resistance", knockbackResistance, AttributeModifier.Operation.ADDITION));
-        }
-        for (Map.Entry<Attribute, AttributeModifier> modifierEntry : material.getAdditionalAttributes().entrySet()) {
-            AttributeModifier atr = modifierEntry.getValue();
-            atr = new AttributeModifier(uuid, atr.getName(), atr.getAmount(), atr.getOperation());
-            builder.put(modifierEntry.getKey(), atr);
-        }
-        //testing for upgrade system
-        //builder.put(AttributeRegistry.FIRE_SPELL_POWER.get(), new AttributeModifier("Armor knockback resistance", .1, AttributeModifier.Operation.ADDITION));
-        ARMOR_ATTRIBUTES = builder.build();
-
+        super(material, type, new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC));
+        this.material = material;
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
         if (pEquipmentSlot == this.type.getSlot()) {
-            return ARMOR_ATTRIBUTES;
+            return this.material.getSlotToAttributeMap().get(pEquipmentSlot);
         } else {
             return ImmutableMultimap.of();
         }
@@ -84,7 +66,6 @@ public class ExtendedArmorItem extends ArmorItem implements GeoItem {
     }
 
     private PlayState predicate(AnimationState<ExtendedArmorItem> extendedArmorItemAnimationState) {
-        //TODO: (1.19.4 port) look at WolfArmorItem. their predicate is way more advanced. Are we missing stuff?
         extendedArmorItemAnimationState.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
         return PlayState.CONTINUE;
     }
@@ -170,7 +151,7 @@ public class ExtendedArmorItem extends ArmorItem implements GeoItem {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public GeoArmorRenderer<?> supplyRenderer(){
+    public GeoArmorRenderer<?> supplyRenderer() {
         return new GeoArmorRenderer<>(new GenericArmorModel<>());
     }
 }

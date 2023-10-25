@@ -12,4 +12,6 @@ public class ModTags {
     public static final TagKey<Item> BASE_WIZARD_CHESTPLATE = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID, "base_wizard_chestplate"));
     public static final TagKey<Item> BASE_WIZARD_LEGGINGS = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID, "base_wizard_leggings"));
     public static final TagKey<Item> BASE_WIZARD_BOOTS = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID, "base_wizard_boots"));
+
+    public static final TagKey<Item> CAN_BE_UPGRADED = ItemTags.create(new ResourceLocation("irons_spellbooks", "can_be_upgraded"));
 }

@@ -1,5 +1,6 @@
 package io.redspace.allthewizardgear.datagen;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import io.redspace.allthewizardgear.AllTheWizardGear;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
@@ -56,6 +57,32 @@ public class ModItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.ELECTROMANCER_HELMET.get())
                 .add(ItemRegistry.PYROMANCER_HELMET.get())
                 .add(ItemRegistry.SHADOWWALKER_HELMET.get());
+
+        this.tag(ModTags.CAN_BE_UPGRADED).replace(false)
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.ALLTHEMODIUM_MAGE_HELMET.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.ALLTHEMODIUM_MAGE_CHESTPLATE.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.ALLTHEMODIUM_MAGE_LEGGINGS.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.ALLTHEMODIUM_MAGE_BOOTS.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.VIBRANIUM_MAGE_HELMET.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.VIBRANIUM_MAGE_CHESTPLATE.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.VIBRANIUM_MAGE_LEGGINGS.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.VIBRANIUM_MAGE_BOOTS.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.UNOBTAINIUM_MAGE_HELMET.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.UNOBTAINIUM_MAGE_CHESTPLATE.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.UNOBTAINIUM_MAGE_LEGGINGS.get())
+                .add(io.redspace.allthewizardgear.registry.ItemRegistry.UNOBTAINIUM_MAGE_BOOTS.get())
+                .add(ModRegistry.ALLTHEMODIUM_HELMET.get())
+                .add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get())
+                .add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get())
+                .add(ModRegistry.ALLTHEMODIUM_BOOTS.get())
+                .add(ModRegistry.VIBRANIUM_HELMET.get())
+                .add(ModRegistry.VIBRANIUM_CHESTPLATE.get())
+                .add(ModRegistry.VIBRANIUM_LEGGINGS.get())
+                .add(ModRegistry.VIBRANIUM_BOOTS.get())
+                .add(ModRegistry.UNOBTAINIUM_HELMET.get())
+                .add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get())
+                .add(ModRegistry.UNOBTAINIUM_LEGGINGS.get())
+                .add(ModRegistry.UNOBTAINIUM_BOOTS.get());
 
     }
 }

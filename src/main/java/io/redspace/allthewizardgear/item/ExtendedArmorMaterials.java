@@ -1,6 +1,9 @@
 package io.redspace.allthewizardgear.item;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import io.redspace.allthewizardgear.Config;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
@@ -12,28 +15,26 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.util.LazyOptional;
 
 import java.util.EnumMap;
-import java.util.Map;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 public enum ExtendedArmorMaterials implements ArmorMaterial {
     //TODO: come up find finalized set of attributes, and hardcode those
-    ALLTHEMODIUM("allthemodium", 42, makeArmorMap(4, 9, 7, 4), 85, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F, 0.0F, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get()), Map.of(
-            AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 200, AttributeModifier.Operation.ADDITION),
-            AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .15, AttributeModifier.Operation.MULTIPLY_TOTAL)
-    )),
-    VIBRANIUM("vibranium", 62, makeArmorMap(6, 11, 9, 6), 105, SoundEvents.ARMOR_EQUIP_NETHERITE, 6.0F, 0.0F, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get()), Map.of(
-            AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 325, AttributeModifier.Operation.ADDITION),
-            AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .25, AttributeModifier.Operation.MULTIPLY_TOTAL)
-    )),
-    UNOBTAINIUM("unobtainium", 82, makeArmorMap(8, 13, 11, 8), 125, SoundEvents.ARMOR_EQUIP_NETHERITE, 8.0F, 0.0F, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()), Map.of(
-            AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 450, AttributeModifier.Operation.ADDITION),
-            AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .4, AttributeModifier.Operation.MULTIPLY_TOTAL)
-    ));
+    ALLTHEMODIUM("allthemodium", Config.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
+    VIBRANIUM("vibranium", Config.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
+    UNOBTAINIUM("unobtainium", Config.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get()));
+//    VIBRANIUM("vibranium", 62, makeArmorMap(6, 11, 9, 6), 105, SoundEvents.ARMOR_EQUIP_NETHERITE, 6.0F, 0.0F, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get()), Map.of(
+//            AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 325, AttributeModifier.Operation.ADDITION),
+//            AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .25, AttributeModifier.Operation.MULTIPLY_TOTAL)
+//    )),
+//    UNOBTAINIUM("unobtainium", 82, makeArmorMap(8, 13, 11, 8), 125, SoundEvents.ARMOR_EQUIP_NETHERITE, 8.0F, 0.0F, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()), Map.of(
+//            AttributeRegistry.MAX_MANA.get(), new AttributeModifier("Max Mana", 450, AttributeModifier.Operation.ADDITION),
+//            AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("Additional Power", .4, AttributeModifier.Operation.MULTIPLY_TOTAL)
+//    ));
 
 //    ALLTHEMODIUM("allthemodium", 42, new int[]{4, 7, 9, 4}, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, 5.0F, 0.5F, () -> {
 //        return Ingredient.of(new ItemLike[]{(ItemLike) ModRegistry.ALLTHEMODIUM_INGOT.get()});
@@ -48,24 +49,70 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;
     private final int durabilityMultiplier;
-    private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;
     private final int enchantmentValue;
     private final SoundEvent sound;
-    private final float toughness;
-    private final float knockbackResistance;
     private final LazyLoadedValue<Ingredient> repairIngredient;
-    private final Map<Attribute, AttributeModifier> additionalAttributes;
+    private final Config.ArmorSetConfig config;
 
-    private ExtendedArmorMaterials(String pName, int pDurabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protectionMap, int pEnchantmentValue, SoundEvent pSound, float pToughness, float pKnockbackResistance, Supplier<Ingredient> pRepairIngredient, Map<Attribute, AttributeModifier> additionalAttributes) {
+    private ExtendedArmorMaterials(String pName, Config.ArmorSetConfig config, int pDurabilityMultiplier, int pEnchantmentValue, SoundEvent pSound, Supplier<Ingredient> pRepairIngredient) {
         this.name = pName;
         this.durabilityMultiplier = pDurabilityMultiplier;
-        this.protectionFunctionForType = protectionMap;
         this.enchantmentValue = pEnchantmentValue;
         this.sound = pSound;
-        this.toughness = pToughness;
-        this.knockbackResistance = pKnockbackResistance;
         this.repairIngredient = new LazyLoadedValue<>(pRepairIngredient);
-        this.additionalAttributes = additionalAttributes;
+        this.config = config;
+        slotToAttributeMap = null;
+    }
+
+    private EnumMap<EquipmentSlot, Multimap<Attribute, AttributeModifier>> slotToAttributeMap;
+
+    public EnumMap<EquipmentSlot, Multimap<Attribute, AttributeModifier>> getSlotToAttributeMap() {
+        if (slotToAttributeMap == null) {
+            slotToAttributeMap = makeSlotToAttributeMap();
+        }
+        return slotToAttributeMap;
+    }
+
+    private EnumMap<EquipmentSlot, Multimap<Attribute, AttributeModifier>> makeSlotToAttributeMap() {
+        return Util.make(new EnumMap<>(EquipmentSlot.class), (map) -> {
+            map.put(EquipmentSlot.FEET, makeAttributeMap(EquipmentSlot.FEET));
+            map.put(EquipmentSlot.LEGS, makeAttributeMap(EquipmentSlot.LEGS));
+            map.put(EquipmentSlot.CHEST, makeAttributeMap(EquipmentSlot.CHEST));
+            map.put(EquipmentSlot.HEAD, makeAttributeMap(EquipmentSlot.HEAD));
+        });
+    }
+
+    public void reload() {
+        this.slotToAttributeMap = null;
+    }
+
+    private static final UUID[] ARMOR_MODIFIER_UUID_PER_SLOT = new UUID[]{UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
+
+    private Multimap<Attribute, AttributeModifier> makeAttributeMap(EquipmentSlot slot) {
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()];
+        double defense = this.config.getDefenseFor(slot);
+        double toughness = this.config.toughness().get();
+        double knockbackResistance = this.config.knockbackResistance().get();
+        double mana = this.config.maxMana().get();
+        double power = this.config.spellPower().get();
+        if (defense > 0) {
+            builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", defense, AttributeModifier.Operation.ADDITION));
+        }
+        if (toughness > 0) {
+            builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor toughness", toughness, AttributeModifier.Operation.ADDITION));
+        }
+        if (knockbackResistance > 0) {
+            builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "Armor  knockback resistance", knockbackResistance, AttributeModifier.Operation.ADDITION));
+        }
+        if (mana > 0) {
+            builder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier(uuid, "Armor mana", mana, AttributeModifier.Operation.ADDITION));
+        }
+        if (power > 0) {
+            builder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier(uuid, "Armor spell power", power, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        }
+
+        return builder.build();
     }
 
     static public EnumMap<ArmorItem.Type, Integer> makeArmorMap(int helmet, int chestplate, int leggings, int boots) {
@@ -75,6 +122,10 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
             p_266655_.put(ArmorItem.Type.CHESTPLATE, chestplate);
             p_266655_.put(ArmorItem.Type.HELMET, helmet);
         });
+    }
+
+    public void getAttributesFor(EquipmentSlot pSlot) {
+
     }
 
     public int getDurabilityForSlot(EquipmentSlot pSlot) {
@@ -92,8 +143,8 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
         return HEALTH_FUNCTION_FOR_TYPE.get(p_266745_) * this.durabilityMultiplier;
     }
 
-    public int getDefenseForType(ArmorItem.Type p_266752_) {
-        return this.protectionFunctionForType.get(p_266752_);
+    public int getDefenseForType(ArmorItem.Type type) {
+        return -1;
     }
 
     public int getEnchantmentValue() {
@@ -113,17 +164,13 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
     }
 
     public float getToughness() {
-        return this.toughness;
-    }
-
-    public Map<Attribute, AttributeModifier> getAdditionalAttributes() {
-        return additionalAttributes;
+        return -1;
     }
 
     /**
      * Gets the percentage of knockback resistance provided by armor of the material.
      */
     public float getKnockbackResistance() {
-        return this.knockbackResistance;
+        return -1;
     }
 }
