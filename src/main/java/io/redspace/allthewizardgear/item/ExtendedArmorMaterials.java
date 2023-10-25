@@ -3,7 +3,7 @@ package io.redspace.allthewizardgear.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.thevortex.allthemodium.registry.ModRegistry;
-import io.redspace.allthewizardgear.Config;
+import io.redspace.allthewizardgear.ServerConfig;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
@@ -16,7 +16,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.util.LazyOptional;
 
 import java.util.EnumMap;
 import java.util.UUID;
@@ -24,9 +23,9 @@ import java.util.function.Supplier;
 
 public enum ExtendedArmorMaterials implements ArmorMaterial {
     //TODO: come up find finalized set of attributes, and hardcode those
-    ALLTHEMODIUM("allthemodium", Config.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
-    VIBRANIUM("vibranium", Config.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
-    UNOBTAINIUM("unobtainium", Config.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()));
+    ALLTHEMODIUM("allthemodium", ServerConfig.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
+    VIBRANIUM("vibranium", ServerConfig.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
+    UNOBTAINIUM("unobtainium", ServerConfig.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;
@@ -34,9 +33,9 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
     private final int enchantmentValue;
     private final SoundEvent sound;
     private final LazyLoadedValue<Ingredient> repairIngredient;
-    private final Config.ArmorSetConfig config;
+    private final ServerConfig.ArmorSetConfig config;
 
-    private ExtendedArmorMaterials(String pName, Config.ArmorSetConfig config, int pDurabilityMultiplier, int pEnchantmentValue, SoundEvent pSound, Supplier<Ingredient> pRepairIngredient) {
+    private ExtendedArmorMaterials(String pName, ServerConfig.ArmorSetConfig config, int pDurabilityMultiplier, int pEnchantmentValue, SoundEvent pSound, Supplier<Ingredient> pRepairIngredient) {
         this.name = pName;
         this.durabilityMultiplier = pDurabilityMultiplier;
         this.enchantmentValue = pEnchantmentValue;

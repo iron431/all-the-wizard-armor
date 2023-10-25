@@ -1,21 +1,16 @@
 package io.redspace.allthewizardgear;
 
 import io.redspace.allthewizardgear.item.ExtendedArmorMaterials;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = AllTheWizardGear.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class Config {
+public class ServerConfig {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
     static ForgeConfigSpec SPEC;
@@ -26,6 +21,8 @@ public class Config {
 
     static {
         BUILDER.push("ArmorConfig");
+        BUILDER.comment("Changing armor values requires world restart");
+
         ALLTHEMODIUM_CONFIG = defineConfig(BUILDER, "allthemodium",
                 List.of(4, 7, 9, 4),
                 4,
