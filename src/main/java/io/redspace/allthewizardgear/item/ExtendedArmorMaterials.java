@@ -3,6 +3,7 @@ package io.redspace.allthewizardgear.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import io.redspace.allthewizardgear.ServerConfig;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.Util;
@@ -23,9 +24,9 @@ import java.util.function.Supplier;
 
 public enum ExtendedArmorMaterials implements ArmorMaterial {
     //TODO: come up find finalized set of attributes, and hardcode those
-    ALLTHEMODIUM("allthemodium", ServerConfig.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
-    VIBRANIUM("vibranium", ServerConfig.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
-    UNOBTAINIUM("unobtainium", ServerConfig.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()));
+    ALLTHEMODIUM("allthemodium", ServerConfig.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagRegistry.ALLTHEMODIUM_INGOT)),
+    VIBRANIUM("vibranium", ServerConfig.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagRegistry.VIBRANIUM_INGOT)),
+    UNOBTAINIUM("unobtainium", ServerConfig.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagRegistry.UNOBTAINIUM_INGOT));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;
@@ -75,8 +76,9 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
         double defense = this.config.getDefenseFor(slot);
         double toughness = this.config.toughness().get();
         double knockbackResistance = this.config.knockbackResistance().get();
-        double mana = this.config.maxMana().get();
+        double maxMana = this.config.maxMana().get();
         double power = this.config.spellPower().get();
+        double manaRegen = this.config.manaRegen().get();
         if (defense != 0) {
             builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", defense, AttributeModifier.Operation.ADDITION));
         }
@@ -86,11 +88,14 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
         if (knockbackResistance != 0) {
             builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "Armor  knockback resistance", knockbackResistance, AttributeModifier.Operation.ADDITION));
         }
-        if (mana != 0) {
-            builder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier(uuid, "Armor mana", mana, AttributeModifier.Operation.ADDITION));
+        if (maxMana != 0) {
+            builder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier(uuid, "Armor maxMana", maxMana, AttributeModifier.Operation.ADDITION));
         }
         if (power != 0) {
             builder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier(uuid, "Armor spell power", power, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        }
+        if (manaRegen != 0) {
+            builder.put(AttributeRegistry.MANA_REGEN.get(), new AttributeModifier(uuid, "Armor mana regen", manaRegen, AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
 
         return builder.build();

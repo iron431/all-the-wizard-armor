@@ -28,24 +28,27 @@ public class ServerConfig {
                 4,
                 0,
                 200,
-                .20);
+                .20,
+                .05);
         VIBRANIUM_CONFIG = defineConfig(BUILDER, "vibranium",
                 List.of(6, 9, 11, 6),
                 5,
                 0,
                 325,
-                .30);
+                .30,
+                .10);
         UNOBTAINIUM_CONFIG = defineConfig(BUILDER, "unobtainium",
                 List.of(8, 11, 13, 8),
                 6,
                 0,
                 450,
-                .40);
+                .40,
+                .15);
         BUILDER.pop();
         SPEC = BUILDER.build();
     }
 
-    private static ArmorSetConfig defineConfig(ForgeConfigSpec.Builder builder, String name, List<Integer> defenseValues, int toughness, double knockbackResistance, int maxMana, double spellPower) {
+    private static ArmorSetConfig defineConfig(ForgeConfigSpec.Builder builder, String name, List<Integer> defenseValues, int toughness, double knockbackResistance, int maxMana, double spellPower, double manaRegen) {
         builder.push(name);
         String localizedName = name.substring(0, 1).toUpperCase() + name.substring(1) + "'s ";
         var config = new ArmorSetConfig(
@@ -53,7 +56,8 @@ public class ServerConfig {
                 builder.worldRestart().comment(localizedName + "Armor Toughness. Default: " + toughness).define("toughness", toughness),
                 builder.worldRestart().comment(localizedName + "Knockback Resistance. Default: " + knockbackResistance).define("knockbackResistance", knockbackResistance),
                 builder.worldRestart().comment(localizedName + "Max Mana. Default: " + maxMana).define("maxMana", maxMana),
-                builder.worldRestart().comment(localizedName + String.format("Spell Power. Default: %s (+%s%%)", spellPower, (int) (spellPower * 100))).define("spellPower", spellPower)
+                builder.worldRestart().comment(localizedName + String.format("Spell Power. Default: %s (+%s%%)", spellPower, (int) (spellPower * 100))).define("spellPower", spellPower),
+                builder.worldRestart().comment(localizedName + String.format("Mana Regen. Default: %s (+%s%%)", manaRegen, (int) (manaRegen * 100))).define("manaRegen", manaRegen)
         );
         builder.pop();
         return config;
@@ -64,7 +68,8 @@ public class ServerConfig {
             ForgeConfigSpec.ConfigValue<? extends Integer> toughness,
             ForgeConfigSpec.ConfigValue<? extends Double> knockbackResistance,
             ForgeConfigSpec.ConfigValue<? extends Integer> maxMana,
-            ForgeConfigSpec.ConfigValue<? extends Double> spellPower
+            ForgeConfigSpec.ConfigValue<? extends Double> spellPower,
+            ForgeConfigSpec.ConfigValue<? extends Double> manaRegen
     ) {
         public double getDefenseFor(EquipmentSlot slot) {
             if (defenseValues.get().size() != 4) {
