@@ -52,6 +52,11 @@ public class ExtendedArmorItem extends ArmorItem implements GeoItem {
     }
 
     @Override
+    public boolean canBeDepleted() {
+        return false;
+    }
+
+    @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
         if (pEquipmentSlot == this.type.getSlot()) {
             return this.material.getSlotToAttributeMap().get(pEquipmentSlot);
