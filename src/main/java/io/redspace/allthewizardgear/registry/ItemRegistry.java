@@ -1,12 +1,10 @@
 package io.redspace.allthewizardgear.registry;
 
 import io.redspace.allthewizardgear.AllTheWizardGear;
-import io.redspace.allthewizardgear.datagen.ModItemModelDataGenerator;
+import io.redspace.allthewizardgear.datagen.ItemModelDataGenerator;
 import io.redspace.allthewizardgear.item.CooldownCastTimeSpellBook;
 import io.redspace.allthewizardgear.item.ExtendedArmorItem;
 import io.redspace.allthewizardgear.item.ExtendedArmorMaterials;
-import io.redspace.ironsspellbooks.api.spells.SpellRarity;
-import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -46,7 +44,7 @@ public class ItemRegistry {
 
     private static RegistryObject<Item> generateItem(String name, Supplier<Item> supplier) {
         var s = ITEMS.register(name, supplier);
-        ModItemModelDataGenerator.toRegister.add(generator -> generator.simpleItem(s));
+        ItemModelDataGenerator.toRegister.add(generator -> generator.simpleItem(s));
         return s;
     }
 

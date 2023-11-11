@@ -76,7 +76,7 @@ ordering="NONE"
 side="BOTH"
 [[dependencies.${mod_id}]]
 modId="allthemodium" #mandatory
-mandatory=true #mandatory
+mandatory=false #mandatory
 versionRange="[2.4.1,)" #mandatory
 ordering="NONE"
 side="BOTH"

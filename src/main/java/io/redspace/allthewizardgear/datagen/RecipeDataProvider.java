@@ -13,17 +13,17 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Consumer;
 
-public class ModRecipeProvider extends RecipeProvider {
-    public ModRecipeProvider(PackOutput p_248933_) {
+public class RecipeDataProvider extends RecipeProvider {
+    public RecipeDataProvider(PackOutput p_248933_) {
         super(p_248933_);
     }
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ModTags.BASE_WIZARD_HELMET, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_HELMET.get());
-        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ModTags.BASE_WIZARD_CHESTPLATE, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_CHESTPLATE.get());
-        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ModTags.BASE_WIZARD_LEGGINGS, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_LEGGINGS.get());
-        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ModTags.BASE_WIZARD_BOOTS, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_BOOTS.get());
+        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ATWGTags.BASE_WIZARD_HELMET, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_HELMET.get());
+        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ATWGTags.BASE_WIZARD_CHESTPLATE, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_CHESTPLATE.get());
+        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ATWGTags.BASE_WIZARD_LEGGINGS, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_LEGGINGS.get());
+        smithing(consumer, ModRegistry.ATM_SMITHING.get(), ATWGTags.BASE_WIZARD_BOOTS, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_MAGE_BOOTS.get());
         smithing(consumer, ModRegistry.ATM_SMITHING.get(), io.redspace.ironsspellbooks.registries.ItemRegistry.NETHERITE_SPELL_BOOK, TagRegistry.ALLTHEMODIUM_INGOT, ItemRegistry.ALLTHEMODIUM_SPELLBOOK.get());
 
         smithing(consumer, ModRegistry.VIB_SMITHING.get(), ItemRegistry.ALLTHEMODIUM_MAGE_HELMET, TagRegistry.VIBRANIUM_INGOT, ItemRegistry.VIBRANIUM_MAGE_HELMET.get());

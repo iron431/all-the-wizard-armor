@@ -2,9 +2,8 @@ package io.redspace.allthewizardgear.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.thevortex.allthemodium.registry.ModRegistry;
-import com.thevortex.allthemodium.registry.TagRegistry;
 import io.redspace.allthewizardgear.ServerConfig;
+import io.redspace.allthewizardgear.datagen.ATWGTags;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
@@ -24,9 +23,9 @@ import java.util.function.Supplier;
 
 public enum ExtendedArmorMaterials implements ArmorMaterial {
     //TODO: come up find finalized set of attributes, and hardcode those
-    ALLTHEMODIUM("allthemodium", ServerConfig.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagRegistry.ALLTHEMODIUM_INGOT)),
-    VIBRANIUM("vibranium", ServerConfig.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagRegistry.VIBRANIUM_INGOT)),
-    UNOBTAINIUM("unobtainium", ServerConfig.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagRegistry.UNOBTAINIUM_INGOT));
+    ALLTHEMODIUM("allthemodium", ServerConfig.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.ALLTHEMODIUM_INGOT)),
+    VIBRANIUM("vibranium", ServerConfig.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.VIBRANIUM_INGOT)),
+    UNOBTAINIUM("unobtainium", ServerConfig.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.UNOBTAINIUM_INGOT));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;
