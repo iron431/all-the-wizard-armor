@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ModItemModelDataGenerator extends ItemModelProvider {
+public class ItemModelDataGenerator extends ItemModelProvider {
 
-    public static List<Consumer<ModItemModelDataGenerator>> toRegister = new ArrayList<>();
+    public static List<Consumer<ItemModelDataGenerator>> toRegister = new ArrayList<>();
 
-    public ModItemModelDataGenerator(PackOutput output, ExistingFileHelper exFileHelper) {
+    public ItemModelDataGenerator(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, AllTheWizardGear.MODID, exFileHelper);
     }
 

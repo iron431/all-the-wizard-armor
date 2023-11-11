@@ -13,15 +13,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
+public class ItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
 
-    public ModItemTagsProvider(PackOutput p_256164_, CompletableFuture p_256488_, @Nullable ExistingFileHelper existingFileHelper) {
+    public ItemTagsProvider(PackOutput p_256164_, CompletableFuture p_256488_, @Nullable ExistingFileHelper existingFileHelper) {
         super(p_256164_, ForgeRegistries.ITEMS.getRegistryKey(), p_256488_, (p_255790_) -> p_255790_.builtInRegistryHolder().key(), AllTheWizardGear.MODID, existingFileHelper);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        this.tag(ModTags.BASE_WIZARD_BOOTS)
+        this.tag(ATWGTags.BASE_WIZARD_BOOTS)
                 .add(ItemRegistry.ARCHEVOKER_BOOTS.get())
                 .add(ItemRegistry.CRYOMANCER_BOOTS.get())
                 .add(ItemRegistry.CULTIST_BOOTS.get())
@@ -30,7 +30,7 @@ public class ModItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.ELECTROMANCER_BOOTS.get())
                 .add(ItemRegistry.PYROMANCER_BOOTS.get())
                 .add(ItemRegistry.SHADOWWALKER_BOOTS.get());
-        this.tag(ModTags.BASE_WIZARD_LEGGINGS)
+        this.tag(ATWGTags.BASE_WIZARD_LEGGINGS)
                 .add(ItemRegistry.ARCHEVOKER_LEGGINGS.get())
                 .add(ItemRegistry.CRYOMANCER_LEGGINGS.get())
                 .add(ItemRegistry.CULTIST_LEGGINGS.get())
@@ -39,7 +39,7 @@ public class ModItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.ELECTROMANCER_LEGGINGS.get())
                 .add(ItemRegistry.PYROMANCER_LEGGINGS.get())
                 .add(ItemRegistry.SHADOWWALKER_LEGGINGS.get());
-        this.tag(ModTags.BASE_WIZARD_CHESTPLATE)
+        this.tag(ATWGTags.BASE_WIZARD_CHESTPLATE)
                 .add(ItemRegistry.ARCHEVOKER_CHESTPLATE.get())
                 .add(ItemRegistry.CRYOMANCER_CHESTPLATE.get())
                 .add(ItemRegistry.CULTIST_CHESTPLATE.get())
@@ -48,7 +48,7 @@ public class ModItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.ELECTROMANCER_CHESTPLATE.get())
                 .add(ItemRegistry.PYROMANCER_CHESTPLATE.get())
                 .add(ItemRegistry.SHADOWWALKER_CHESTPLATE.get());
-        this.tag(ModTags.BASE_WIZARD_HELMET)
+        this.tag(ATWGTags.BASE_WIZARD_HELMET)
                 .add(ItemRegistry.ARCHEVOKER_HELMET.get())
                 .add(ItemRegistry.CRYOMANCER_HELMET.get())
                 .add(ItemRegistry.CULTIST_HELMET.get())
@@ -58,7 +58,7 @@ public class ModItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.PYROMANCER_HELMET.get())
                 .add(ItemRegistry.SHADOWWALKER_HELMET.get());
 
-        this.tag(ModTags.CAN_BE_UPGRADED).replace(false)
+        this.tag(ATWGTags.CAN_BE_UPGRADED).replace(false)
                 .add(io.redspace.allthewizardgear.registry.ItemRegistry.ALLTHEMODIUM_MAGE_HELMET.get())
                 .add(io.redspace.allthewizardgear.registry.ItemRegistry.ALLTHEMODIUM_MAGE_CHESTPLATE.get())
                 .add(io.redspace.allthewizardgear.registry.ItemRegistry.ALLTHEMODIUM_MAGE_LEGGINGS.get())
