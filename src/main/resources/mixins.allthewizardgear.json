@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "io.redspace.allthewizardgear.mixin",
+  "refmap": "allthewizardgear.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "SmithingRecipeMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

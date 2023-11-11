@@ -140,6 +140,9 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.neoforged:forge:${minecraft_version}-${neo_version}"
+
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+
     // IRONS SPELLS N SPELLBOOKS **********************************************************************************
     //TODO: use api once the api contains the item registry
     //compileOnly fg.deobf("io.redspace.ironsspellbooks:irons_spellbooks:${irons_spells_version}:api")
@@ -208,7 +211,8 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs"            : "mixins.${mod_id}.json"
         ])
     }
 
@@ -237,4 +241,8 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+mixin {
+    add sourceSets.main, 'allthewizardgear.refmap.json'
+    config 'mixins.allthewizardgear.json'
 }
