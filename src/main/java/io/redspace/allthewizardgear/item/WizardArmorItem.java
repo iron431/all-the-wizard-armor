@@ -34,26 +34,35 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-public class ExtendedArmorItem extends ArmorItem implements GeoItem {
+public class WizardArmorItem extends ArmorItem implements GeoItem {
     private static final UUID[] ARMOR_MODIFIER_UUID_PER_SLOT = new UUID[]{UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>()).build();
-    //.put(ModArmorMaterials., new MobEffectInstance(MobEffects.LUCK, 200, 1)).build();
 
 
     //Shadowing
     private final ExtendedArmorMaterials material;
 
-    public ExtendedArmorItem(ExtendedArmorMaterials material, Type type) {
+    public WizardArmorItem(ExtendedArmorMaterials material, Type type) {
         super(material, type, new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC));
         this.material = material;
     }
 
     @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
     public boolean canBeDepleted() {
         return false;
+    }
+
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
+        return true;
     }
 
     @Override
@@ -67,10 +76,10 @@ public class ExtendedArmorItem extends ArmorItem implements GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<ExtendedArmorItem>(this, "controller", 20, this::predicate));
+        controllerRegistrar.add(new AnimationController<WizardArmorItem>(this, "controller", 20, this::predicate));
     }
 
-    private PlayState predicate(AnimationState<ExtendedArmorItem> extendedArmorItemAnimationState) {
+    private PlayState predicate(AnimationState<WizardArmorItem> extendedArmorItemAnimationState) {
         extendedArmorItemAnimationState.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
         return PlayState.CONTINUE;
     }

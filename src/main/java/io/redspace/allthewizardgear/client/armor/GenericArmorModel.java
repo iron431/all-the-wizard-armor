@@ -1,11 +1,11 @@
 package io.redspace.allthewizardgear.client.armor;
 
 import io.redspace.allthewizardgear.AllTheWizardGear;
-import io.redspace.allthewizardgear.item.ExtendedArmorItem;
+import io.redspace.allthewizardgear.item.WizardArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedItemGeoModel;
 
-public class GenericArmorModel<T extends ExtendedArmorItem> extends DefaultedItemGeoModel<T> {
+public class GenericArmorModel<T extends WizardArmorItem> extends DefaultedItemGeoModel<T> {
 
     public GenericArmorModel() {
         super(new ResourceLocation(AllTheWizardGear.MODID, ""));
