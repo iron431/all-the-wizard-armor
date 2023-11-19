@@ -10,6 +10,6 @@
     "item": "allthewizardgear:allthemodium_spell_book"
   },
   "template": {
-    "item": "allthemodium:allthemodium_upgrade_smithing_template"
+    "tag": "allthewizardgear:allthemodium_smithing"
   }
 }

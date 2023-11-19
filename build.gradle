@@ -155,7 +155,7 @@ dependencies {
 
     // ALLTHEMODIUM  ***************************************************************************************************
     compileOnly fg.deobf("curse.maven:allthemodium-${allthemodium_version}")
-    //runtimeOnly fg.deobf("curse.maven:allthemodium-${allthemodium_version}")
+    runtimeOnly fg.deobf("curse.maven:allthemodium-${allthemodium_version}")
     runtimeOnly fg.deobf("curse.maven:ato-${alltheores_version}")
 
     // CAELUS *****************************************************************************************************

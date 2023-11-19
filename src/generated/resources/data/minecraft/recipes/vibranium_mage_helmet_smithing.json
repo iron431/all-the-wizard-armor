@@ -10,6 +10,6 @@
     "item": "allthewizardgear:vibranium_mage_helmet"
   },
   "template": {
-    "item": "allthemodium:vibranium_upgrade_smithing_template"
+    "tag": "allthewizardgear:vibranium_smithing"
   }
 }
