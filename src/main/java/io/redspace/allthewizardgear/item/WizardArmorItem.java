@@ -66,6 +66,11 @@ public class WizardArmorItem extends ArmorItem implements GeoItem {
     }
 
     @Override
+    public ExtendedArmorMaterials getMaterial() {
+        return this.material;
+    }
+
+    @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
         if (pEquipmentSlot == this.type.getSlot()) {
             return this.material.getSlotToAttributeMap().get(pEquipmentSlot);

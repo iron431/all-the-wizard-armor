@@ -109,6 +109,14 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
         });
     }
 
+    public boolean helmetPreventsDrowning(){return config.helmetPreventsDrowning().get();}
+    public boolean helmetPreventsElytraDamage(){return config.helmetPreventsElytraDamage().get();}
+    public boolean chestplatePreventsFire(){return config.chestplatePreventsFire().get();}
+    public boolean chestplatePreventsDragonBreath(){return config.chestplatePreventsDragonBreath().get();}
+    public boolean leggingsPreventWither(){return config.leggingsPreventWither().get();}
+    public boolean leggingsPreventLevitation(){return config.leggingsPreventLevitation().get();}
+    public boolean bootsPreventFallDamage(){return config.bootsPreventFallDamage().get();}
+
     public void getAttributesFor(EquipmentSlot pSlot) {
 
     }
