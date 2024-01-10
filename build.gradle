@@ -215,7 +215,8 @@ tasks.named('jar', Jar).configure {
                 "MixinConfigs"            : "mixins.${mod_id}.json"
         ])
     }
-
+    exclude('**/*.psd')
+    exclude('**/*.bbmodel')
     // This is the preferred method to reobfuscate your jar file
     finalizedBy 'reobfJar'
 }
