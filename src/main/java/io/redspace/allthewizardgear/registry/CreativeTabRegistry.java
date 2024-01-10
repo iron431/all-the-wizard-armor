@@ -45,16 +45,8 @@ public class CreativeTabRegistry {
 
     @SubscribeEvent
     public static void fillCreativeTab(BuildCreativeModeTabContentsEvent event) {
-        IronsSpellbooks.LOGGER.debug("AllTheWizardGear CreativeTabRegistry fillCreativeTab");
         if (event.getTabKey() == MOD_ARMOR_TAB.getKey()) {
-            IronsSpellbooks.LOGGER.debug("AllTheWizardGear CreativeTabRegistry fillCreativeTab2");
-//            ItemRegistry.items().forEach(event::accept);
-            ItemRegistry.items().forEach((item) -> {
-                event.accept(item);
-                IronsSpellbooks.LOGGER.debug(item.getKey() + "");
-            });
+            ItemRegistry.items().forEach(event::accept);
         }
     }
-
-
 }

@@ -46,7 +46,11 @@ public class WizardArmorItem extends ArmorItem implements GeoItem {
     private final ExtendedArmorMaterials material;
 
     public WizardArmorItem(ExtendedArmorMaterials material, Type type) {
-        super(material, type, new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC));
+        this(material, type, Rarity.EPIC);
+    }
+
+    public WizardArmorItem(ExtendedArmorMaterials material, Type type, Rarity rarity) {
+        super(material, type, new Properties().stacksTo(1).fireResistant().rarity(rarity));
         this.material = material;
     }
 

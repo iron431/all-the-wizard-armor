@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -16,13 +17,15 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 
 import java.util.EnumMap;
 import java.util.UUID;
 import java.util.function.Supplier;
 
 public enum ExtendedArmorMaterials implements ArmorMaterial {
-    //TODO: come up find finalized set of attributes, and hardcode those
+    NETHERITE("netherite", ServerConfig.NETHERITE_CONFIG, 37, 15, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(Tags.Items.INGOTS_NETHERITE)),
     ALLTHEMODIUM("allthemodium", ServerConfig.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.ALLTHEMODIUM_INGOT)),
     VIBRANIUM("vibranium", ServerConfig.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.VIBRANIUM_INGOT)),
     UNOBTAINIUM("unobtainium", ServerConfig.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.UNOBTAINIUM_INGOT));
