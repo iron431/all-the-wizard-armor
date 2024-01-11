@@ -28,7 +28,7 @@ public class ServerConfig {
                 List.of(3, 6, 8, 3),
                 3,
                 0,
-                159,
+                100,
                 0.0,
                 0.0,
                 false,
