@@ -1,7 +1,6 @@
 package io.redspace.allthewizardgear.registry;
 
 import io.redspace.allthewizardgear.AllTheWizardGear;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

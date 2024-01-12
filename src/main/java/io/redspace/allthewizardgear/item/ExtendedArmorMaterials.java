@@ -8,7 +8,6 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -18,7 +17,6 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
 
 import java.util.EnumMap;
 import java.util.UUID;
@@ -38,7 +36,7 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
     private final LazyLoadedValue<Ingredient> repairIngredient;
     private final ServerConfig.ArmorSetConfig config;
 
-    private ExtendedArmorMaterials(String pName, ServerConfig.ArmorSetConfig config, int pDurabilityMultiplier, int pEnchantmentValue, SoundEvent pSound, Supplier<Ingredient> pRepairIngredient) {
+    ExtendedArmorMaterials(String pName, ServerConfig.ArmorSetConfig config, int pDurabilityMultiplier, int pEnchantmentValue, SoundEvent pSound, Supplier<Ingredient> pRepairIngredient) {
         this.name = pName;
         this.durabilityMultiplier = pDurabilityMultiplier;
         this.enchantmentValue = pEnchantmentValue;
@@ -119,15 +117,7 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
     public boolean leggingsPreventWither(){return config.leggingsPreventWither().get();}
     public boolean leggingsPreventLevitation(){return config.leggingsPreventLevitation().get();}
     public boolean bootsPreventFallDamage(){return config.bootsPreventFallDamage().get();}
-
-    public void getAttributesFor(EquipmentSlot pSlot) {
-
-    }
-
-    public int getDurabilityForSlot(EquipmentSlot pSlot) {
-        return HEALTH_PER_SLOT[pSlot.getIndex()] * this.durabilityMultiplier;
-    }
-
+    
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
         p_266653_.put(ArmorItem.Type.BOOTS, 13);
         p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
