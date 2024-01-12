@@ -1,6 +1,8 @@
 package io.redspace.allthewizardgear.registry;
 
 import io.redspace.allthewizardgear.AllTheWizardGear;
+import io.redspace.allthewizardgear.item.ExtendedArmorMaterials;
+import io.redspace.allthewizardgear.item.WizardArmorItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,31 +23,20 @@ public class CreativeTabRegistry {
     }
 
     public static final RegistryObject<CreativeModeTab> MOD_ARMOR_TAB = CREATIVE_MODE_TABS.register("allthewizardarmor_tab", () -> CreativeModeTab.builder()
-            .withTabsBefore(CreativeModeTabs.COMBAT)
             .title(Component.translatable("tab.allthewizardarmor.armor"))
-            .icon(() -> ItemRegistry.UNOBTAINIUM_MAGE_CHESTPLATE.get().getDefaultInstance())
+            .icon(() -> ItemRegistry.NETHERITE_MAGE_HELMET.get().getDefaultInstance())
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .displayItems((parameters, output) -> {
-                output.accept(ItemRegistry.ALLTHEMODIUM_MAGE_HELMET.get());
-                output.accept(ItemRegistry.ALLTHEMODIUM_MAGE_CHESTPLATE.get());
-                output.accept(ItemRegistry.ALLTHEMODIUM_MAGE_LEGGINGS.get());
-                output.accept(ItemRegistry.ALLTHEMODIUM_MAGE_BOOTS.get());
-
-                output.accept(ItemRegistry.VIBRANIUM_MAGE_HELMET.get());
-                output.accept(ItemRegistry.VIBRANIUM_MAGE_CHESTPLATE.get());
-                output.accept(ItemRegistry.VIBRANIUM_MAGE_LEGGINGS.get());
-                output.accept(ItemRegistry.VIBRANIUM_MAGE_BOOTS.get());
-
-                output.accept(ItemRegistry.UNOBTAINIUM_MAGE_HELMET.get());
-                output.accept(ItemRegistry.UNOBTAINIUM_MAGE_CHESTPLATE.get());
-                output.accept(ItemRegistry.UNOBTAINIUM_MAGE_LEGGINGS.get());
-                output.accept(ItemRegistry.UNOBTAINIUM_MAGE_BOOTS.get());
             }).build());
 
     @SubscribeEvent
     public static void fillCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == MOD_ARMOR_TAB.getKey()) {
-            ItemRegistry.items().forEach(event::accept);
+            ItemRegistry.items().forEach(item -> {
+                if (item.get() instanceof WizardArmorItem armorItem && armorItem.getMaterial() == ExtendedArmorMaterials.NETHERITE) {
+                    event.accept(item);
+                }
+            });
         }
     }
 }

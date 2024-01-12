@@ -117,7 +117,7 @@ public enum ExtendedArmorMaterials implements ArmorMaterial {
     public boolean leggingsPreventWither(){return config.leggingsPreventWither().get();}
     public boolean leggingsPreventLevitation(){return config.leggingsPreventLevitation().get();}
     public boolean bootsPreventFallDamage(){return config.bootsPreventFallDamage().get();}
-    
+
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
         p_266653_.put(ArmorItem.Type.BOOTS, 13);
         p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
