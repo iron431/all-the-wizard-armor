@@ -23,11 +23,6 @@ public class ItemRegistry {
         ITEMS.register(eventBus);
     }
 
-    public static final RegistryObject<Item> NETHERITE_MAGE_HELMET = generateItem("netherite_mage_helmet", () -> new WizardArmorItem(ExtendedArmorMaterials.NETHERITE, ArmorItem.Type.HELMET, Rarity.COMMON));
-    public static final RegistryObject<Item> NETHERITE_MAGE_CHESTPLATE = generateItem("netherite_mage_chestplate", () -> new WizardArmorItem(ExtendedArmorMaterials.NETHERITE, ArmorItem.Type.CHESTPLATE, Rarity.COMMON));
-    public static final RegistryObject<Item> NETHERITE_MAGE_LEGGINGS = generateItem("netherite_mage_leggings", () -> new WizardArmorItem(ExtendedArmorMaterials.NETHERITE, ArmorItem.Type.LEGGINGS, Rarity.COMMON));
-    public static final RegistryObject<Item> NETHERITE_MAGE_BOOTS = generateItem("netherite_mage_boots", () -> new WizardArmorItem(ExtendedArmorMaterials.NETHERITE, ArmorItem.Type.BOOTS, Rarity.COMMON));
-
     public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_HELMET = generateItem("allthemodium_mage_helmet", () -> new WizardArmorItem(ExtendedArmorMaterials.ALLTHEMODIUM, ArmorItem.Type.HELMET));
     public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_CHESTPLATE = generateItem("allthemodium_mage_chestplate", () -> new WizardArmorItem(ExtendedArmorMaterials.ALLTHEMODIUM, ArmorItem.Type.CHESTPLATE));
     public static final RegistryObject<Item> ALLTHEMODIUM_MAGE_LEGGINGS = generateItem("allthemodium_mage_leggings", () -> new WizardArmorItem(ExtendedArmorMaterials.ALLTHEMODIUM, ArmorItem.Type.LEGGINGS));

@@ -15,7 +15,6 @@ public class ServerConfig {
 
     static ForgeConfigSpec SPEC;
 
-    public static ArmorSetConfig NETHERITE_CONFIG;
     public static ArmorSetConfig ALLTHEMODIUM_CONFIG;
     public static ArmorSetConfig VIBRANIUM_CONFIG;
     public static ArmorSetConfig UNOBTAINIUM_CONFIG;
@@ -24,21 +23,7 @@ public class ServerConfig {
         BUILDER.push("ArmorConfig");
         BUILDER.comment("Changing armor values requires world restart");
 
-        NETHERITE_CONFIG = defineConfig(BUILDER, "netherite",
-                List.of(3, 6, 8, 3),
-                3,
-                0,
-                100,
-                0.0,
-                0.0,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                true);
-        ALLTHEMODIUM_CONFIG = defineConfig(BUILDER, "allthemodium",
+       ALLTHEMODIUM_CONFIG = defineConfig(BUILDER, "allthemodium",
                 List.of(4, 7, 9, 4),
                 4,
                 0,

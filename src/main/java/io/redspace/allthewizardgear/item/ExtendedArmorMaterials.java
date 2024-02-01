@@ -23,7 +23,6 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 public enum ExtendedArmorMaterials implements ArmorMaterial {
-    NETHERITE("netherite", ServerConfig.NETHERITE_CONFIG, 37, 15, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(Tags.Items.INGOTS_NETHERITE)),
     ALLTHEMODIUM("allthemodium", ServerConfig.ALLTHEMODIUM_CONFIG, 42, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.ALLTHEMODIUM_INGOT)),
     VIBRANIUM("vibranium", ServerConfig.VIBRANIUM_CONFIG, 62, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.VIBRANIUM_INGOT)),
     UNOBTAINIUM("unobtainium", ServerConfig.UNOBTAINIUM_CONFIG, 82, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ATWGTags.UNOBTAINIUM_INGOT));
