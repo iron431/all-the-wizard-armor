@@ -5,6 +5,8 @@ import io.redspace.allthewizardgear.datagen.ItemModelDataGenerator;
 import io.redspace.allthewizardgear.item.CooldownCastTimeSpellBook;
 import io.redspace.allthewizardgear.item.WizardArmorItem;
 import io.redspace.allthewizardgear.item.ExtendedArmorMaterials;
+import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -38,9 +40,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> UNOBTAINIUM_MAGE_LEGGINGS = generateItem("unobtainium_mage_leggings", () -> new WizardArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.LEGGINGS));
     public static final RegistryObject<Item> UNOBTAINIUM_MAGE_BOOTS = generateItem("unobtainium_mage_boots", () -> new WizardArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.BOOTS));
 
-    public static final RegistryObject<Item> ALLTHEMODIUM_SPELLBOOK = generateItem("allthemodium_spell_book", () -> new CooldownCastTimeSpellBook(11, .3, .15));
-    public static final RegistryObject<Item> VIBRANIUM_SPELLBOOK = generateItem("vibranium_spell_book", () -> new CooldownCastTimeSpellBook(12, .4, .25));
-    public static final RegistryObject<Item> UNOBTAINIUM_SPELLBOOK = generateItem("unobtainium_spell_book", () -> new CooldownCastTimeSpellBook(13, .5, .35));
+    public static final RegistryObject<Item> ALLTHEMODIUM_SPELLBOOK = generateItem("allthemodium_spell_book", () -> new CooldownCastTimeSpellBook(13, .3, .15));
+    public static final RegistryObject<Item> VIBRANIUM_SPELLBOOK = generateItem("vibranium_spell_book", () -> new CooldownCastTimeSpellBook(14, .4, .25));
+    public static final RegistryObject<Item> UNOBTAINIUM_SPELLBOOK = generateItem("unobtainium_spell_book", () -> new CooldownCastTimeSpellBook(15, .5, .35));
 
     private static RegistryObject<Item> generateItem(String name, Supplier<Item> supplier) {
         var s = ITEMS.register(name, supplier);

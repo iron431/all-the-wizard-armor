@@ -125,6 +125,9 @@ repositories {
     maven {
         url = "https://code.redspace.io/releases"
     }
+    maven {
+        url = "https://code.redspace.io/snapshots"
+    }
     maven { url = "https://maven.enginehub.org/repo/" }
     maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     maven { url = "https://maven.theillusivec4.top" }
@@ -165,6 +168,7 @@ dependencies {
     runtimeOnly fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
 
     // CURIOS *****************************************************************************************************
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
