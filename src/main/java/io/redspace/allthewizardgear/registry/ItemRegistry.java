@@ -40,13 +40,19 @@ public class ItemRegistry {
     public static final RegistryObject<Item> UNOBTAINIUM_MAGE_LEGGINGS = generateItem("unobtainium_mage_leggings", () -> new WizardArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.LEGGINGS));
     public static final RegistryObject<Item> UNOBTAINIUM_MAGE_BOOTS = generateItem("unobtainium_mage_boots", () -> new WizardArmorItem(ExtendedArmorMaterials.UNOBTAINIUM, ArmorItem.Type.BOOTS));
 
-    public static final RegistryObject<Item> ALLTHEMODIUM_SPELLBOOK = generateItem("allthemodium_spell_book", () -> new CooldownCastTimeSpellBook(13, .3, .15));
-    public static final RegistryObject<Item> VIBRANIUM_SPELLBOOK = generateItem("vibranium_spell_book", () -> new CooldownCastTimeSpellBook(14, .4, .25));
-    public static final RegistryObject<Item> UNOBTAINIUM_SPELLBOOK = generateItem("unobtainium_spell_book", () -> new CooldownCastTimeSpellBook(15, .5, .35));
+    public static final RegistryObject<Item> ALLTHEMODIUM_SPELLBOOK = generateSpellBook("allthemodium_spell_book", () -> new CooldownCastTimeSpellBook(13, .3, .15));
+    public static final RegistryObject<Item> VIBRANIUM_SPELLBOOK = generateSpellBook("vibranium_spell_book", () -> new CooldownCastTimeSpellBook(14, .4, .25));
+    public static final RegistryObject<Item> UNOBTAINIUM_SPELLBOOK = generateSpellBook("unobtainium_spell_book", () -> new CooldownCastTimeSpellBook(15, .5, .35));
 
     private static RegistryObject<Item> generateItem(String name, Supplier<Item> supplier) {
         var s = ITEMS.register(name, supplier);
         ItemModelDataGenerator.toRegister.add(generator -> generator.simpleItem(s));
+        return s;
+    }
+
+    private static RegistryObject<Item> generateSpellBook(String name, Supplier<Item> supplier) {
+        var s = ITEMS.register(name, supplier);
+        //ItemModelDataGenerator.toRegister.add(generator -> generator.spellBookItem(s));
         return s;
     }
 
