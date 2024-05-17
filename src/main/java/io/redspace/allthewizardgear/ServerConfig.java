@@ -36,7 +36,8 @@ public class ServerConfig {
                 false,
                 false,
                 false,
-                true);
+                true,
+               true);
         VIBRANIUM_CONFIG = defineConfig(BUILDER, "vibranium",
                 List.of(6, 9, 11, 6),
                 5,
@@ -50,6 +51,7 @@ public class ServerConfig {
                 false,
                 true,
                 false,
+                true,
                 true);
         UNOBTAINIUM_CONFIG = defineConfig(BUILDER, "unobtainium",
                 List.of(8, 11, 13, 8),
@@ -58,6 +60,7 @@ public class ServerConfig {
                 450,
                 .40,
                 .15,
+                true,
                 true,
                 true,
                 true,
@@ -76,7 +79,8 @@ public class ServerConfig {
                                                boolean chestplatePreventsDragonBreath,
                                                boolean leggingsPreventWither,
                                                boolean leggingsPreventLevitation,
-                                               boolean bootsPreventFallDamage) {
+                                               boolean bootsPreventFallDamage,
+                                               boolean makesPiglinsNeutral) {
         builder.push(name);
         String localizedName = name.substring(0, 1).toUpperCase() + name.substring(1) + "'s ";
         var config = new ArmorSetConfig(
@@ -92,7 +96,8 @@ public class ServerConfig {
                 builder.worldRestart().comment(localizedName + String.format("Chestplate Prevents Dragon Breath. Default: %s", chestplatePreventsDragonBreath)).define("chestplatePreventsDragonBreath", chestplatePreventsDragonBreath),
                 builder.worldRestart().comment(localizedName + String.format("Leggings Prevent Wither. Default: %s", leggingsPreventWither)).define("leggingsPreventWither", leggingsPreventWither),
                 builder.worldRestart().comment(localizedName + String.format("Leggings Prevent Levitation. Default: %s", leggingsPreventLevitation)).define("leggingsPreventLevitation", leggingsPreventLevitation),
-                builder.worldRestart().comment(localizedName + String.format("Boots Prevent Fall Damage. Default: %s", bootsPreventFallDamage)).define("bootsPreventFallDamage", bootsPreventFallDamage)
+                builder.worldRestart().comment(localizedName + String.format("Boots Prevent Fall Damage. Default: %s", bootsPreventFallDamage)).define("bootsPreventFallDamage", bootsPreventFallDamage),
+                builder.worldRestart().comment(localizedName + String.format("Armor makes Piglins Neutral (like gold armor). Default: %s", makesPiglinsNeutral)).define("makesPiglinsNeutral", makesPiglinsNeutral)
         );
         builder.pop();
         return config;
@@ -111,7 +116,8 @@ public class ServerConfig {
             ForgeConfigSpec.ConfigValue<? extends Boolean> chestplatePreventsDragonBreath,
             ForgeConfigSpec.ConfigValue<? extends Boolean> leggingsPreventWither,
             ForgeConfigSpec.ConfigValue<? extends Boolean> leggingsPreventLevitation,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> bootsPreventFallDamage
+            ForgeConfigSpec.ConfigValue<? extends Boolean> bootsPreventFallDamage,
+            ForgeConfigSpec.ConfigValue<? extends Boolean> makesPiglinsNeutral
     ) {
         public double getDefenseFor(EquipmentSlot slot) {
             if (defenseValues.get().size() != 4) {

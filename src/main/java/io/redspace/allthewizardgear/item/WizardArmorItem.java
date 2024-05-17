@@ -4,6 +4,8 @@ import io.redspace.allthewizardgear.client.armor.GenericArmorModel;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer;
+import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -34,7 +36,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-public class WizardArmorItem extends ArmorItem implements GeoItem {
+public class WizardArmorItem extends ArmorItem implements GeoItem, IPresetSpellContainer {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     //Shadowing
@@ -61,7 +63,7 @@ public class WizardArmorItem extends ArmorItem implements GeoItem {
 
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-        return true;
+        return this.material.makesPiglinsNeutral();
     }
 
     @Override
@@ -111,5 +113,20 @@ public class WizardArmorItem extends ArmorItem implements GeoItem {
                 return this.renderer;
             }
         });
+    }
+
+
+    @Override
+    public void initializeSpellContainer(ItemStack itemStack) {
+        if (itemStack == null) {
+            return;
+        }
+
+        if (itemStack.getItem() instanceof ArmorItem armorItem && armorItem.getType() == Type.CHESTPLATE) {
+            if (!ISpellContainer.isSpellContainer(itemStack)) {
+                var spellContainer = ISpellContainer.create(1, true, true);
+                spellContainer.save(itemStack);
+            }
+        }
     }
 }
