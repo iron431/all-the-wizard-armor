@@ -1,0 +1,21 @@
+{
+  "item.allthewizardgear.unobtainium_mage_helmet": "언옵테늄 마법사 모자",
+  "item.allthewizardgear.unobtainium_mage_chestplate": "언옵테늄 마법사 로브",
+  "item.allthewizardgear.unobtainium_mage_leggings": "언옵테늄 마법사 레깅스",
+  "item.allthewizardgear.unobtainium_mage_boots": "언옵테늄 마법사 부츠",
+  "item.allthewizardgear.unobtainium_spell_book": "언옵테늄 주문서",
+
+  "item.allthewizardgear.vibranium_mage_helmet": "비브라늄 마법사 모자",
+  "item.allthewizardgear.vibranium_mage_chestplate": "비브라늄 마법사 로브",
+  "item.allthewizardgear.vibranium_mage_leggings": "비브라늄 마법사 레깅스",
+  "item.allthewizardgear.vibranium_mage_boots": "비브라늄 마법사 부츠",
+  "item.allthewizardgear.vibranium_spell_book": "비브라늄 주문서",
+
+  "item.allthewizardgear.allthemodium_mage_helmet": "올더모듐 마법사 모자",
+  "item.allthewizardgear.allthemodium_mage_chestplate": "올더모듐 마법사 로브",
+  "item.allthewizardgear.allthemodium_mage_leggings": "올더모듐 마법사 레깅스",
+  "item.allthewizardgear.allthemodium_mage_boots": "올더모듐 마법사 부츠",
+  "item.allthewizardgear.allthemodium_spell_book": "올더모듐 주문서",
+
+  "tab.allthewizardarmor.armor": "All The Wizard Gear"
+}
