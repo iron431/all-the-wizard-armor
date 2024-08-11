@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "c:ingots/unobtainium"
+  },
+  "base": {
+    "item": "allthewizardgear:vibranium_mage_boots"
+  },
+  "result": {
+    "count": 1,
+    "id": "allthewizardgear:unobtainium_mage_boots"
+  },
+  "template": {
+    "tag": "allthewizardgear:unobtainium_smithing"
+  }
+}

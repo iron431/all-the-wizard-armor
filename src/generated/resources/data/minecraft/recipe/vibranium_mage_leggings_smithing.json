@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "c:ingots/vibranium"
+  },
+  "base": {
+    "item": "allthewizardgear:allthemodium_mage_leggings"
+  },
+  "result": {
+    "count": 1,
+    "id": "allthewizardgear:vibranium_mage_leggings"
+  },
+  "template": {
+    "tag": "allthewizardgear:vibranium_smithing"
+  }
+}

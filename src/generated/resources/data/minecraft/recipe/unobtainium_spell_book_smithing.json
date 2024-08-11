@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "c:ingots/unobtainium"
+  },
+  "base": {
+    "item": "allthewizardgear:vibranium_spell_book"
+  },
+  "result": {
+    "components": {
+      "irons_spellbooks:spell_container": {
+        "data": [],
+        "maxSpells": 15,
+        "mustEquip": true,
+        "spellWheel": true
+      }
+    },
+    "count": 1,
+    "id": "allthewizardgear:unobtainium_spell_book"
+  },
+  "template": {
+    "tag": "allthewizardgear:unobtainium_smithing"
+  }
+}

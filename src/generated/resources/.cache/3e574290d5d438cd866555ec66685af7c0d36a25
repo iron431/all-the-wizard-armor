@@ -1,5 +1,5 @@
-// 1.20.1	2024-03-01T20:47:05.3704674	Tags for minecraft:item mod id allthewizardgear
-2509fd26dff268a4adc88f53b082bfdb8b65627a data/allthewizardgear/tags/items/base_wizard_boots.json
-7c694219dcb135ca4cbcb099ba8371ed160c3e68 data/allthewizardgear/tags/items/base_wizard_chestplate.json
-8a12b0cc0a462df47d483cb9b451d30fa79070bb data/allthewizardgear/tags/items/base_wizard_helmet.json
-1c61858e0dd933b59d98d37f68549012c859a891 data/allthewizardgear/tags/items/base_wizard_leggings.json
+// 1.21	2024-08-11T15:01:32.4139052	Tags for minecraft:item mod id allthewizardgear
+2509fd26dff268a4adc88f53b082bfdb8b65627a data/allthewizardgear/tags/item/base_wizard_boots.json
+7c694219dcb135ca4cbcb099ba8371ed160c3e68 data/allthewizardgear/tags/item/base_wizard_chestplate.json
+8a12b0cc0a462df47d483cb9b451d30fa79070bb data/allthewizardgear/tags/item/base_wizard_helmet.json
+1c61858e0dd933b59d98d37f68549012c859a891 data/allthewizardgear/tags/item/base_wizard_leggings.json

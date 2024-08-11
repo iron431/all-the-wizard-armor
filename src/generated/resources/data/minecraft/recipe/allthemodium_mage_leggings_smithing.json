@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "c:ingots/allthemodium"
+  },
+  "base": {
+    "tag": "allthewizardgear:base_wizard_leggings"
+  },
+  "result": {
+    "count": 1,
+    "id": "allthewizardgear:allthemodium_mage_leggings"
+  },
+  "template": {
+    "tag": "allthewizardgear:allthemodium_smithing"
+  }
+}
