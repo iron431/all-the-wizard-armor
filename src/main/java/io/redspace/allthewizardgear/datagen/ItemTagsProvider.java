@@ -3,11 +3,11 @@ package io.redspace.allthewizardgear.datagen;
 import io.redspace.allthewizardgear.AllTheWizardGear;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 public class ItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
 
     public ItemTagsProvider(PackOutput p_256164_, CompletableFuture p_256488_, @Nullable ExistingFileHelper existingFileHelper) {
-        super(p_256164_, ForgeRegistries.ITEMS.getRegistryKey(), p_256488_, (p_255790_) -> p_255790_.builtInRegistryHolder().key(), AllTheWizardGear.MODID, existingFileHelper);
+        super(p_256164_, Registries.ITEM, p_256488_, (p_255790_) -> p_255790_.builtInRegistryHolder().key(), AllTheWizardGear.MODID, existingFileHelper);
     }
 
     @Override

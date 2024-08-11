@@ -1,4 +1,4 @@
-# This is an example mods.toml file. It contains the data relating to the loading mods.
+# This is an example neoforge.mods.toml file. It contains the data relating to the loading mods.
 # There are several mandatory fields (#mandatory), and many more that are optional (#optional).
 # The overall format is standard TOML format, v0.5.0.
 # Note that there are a couple of TOML lists in this file.
@@ -15,7 +15,7 @@ license="${mod_license}"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="${mod_id}" #mandatory
+modId="allthewizardgear" #mandatory
 # The version number of the mod
 version="${mod_version}" #mandatory
 # A display name for the mod
@@ -41,45 +41,7 @@ authors="${mod_authors}" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''${mod_description}'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.${mod_id}]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="${neo_version_range}" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the dependency is not mandatory
-    # BEFORE - This mod is loaded BEFORE the dependency
-    # AFTER - This mod is loaded AFTER the dependency
-    ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT, or SERVER
-    side="BOTH"
-# Here's another dependency
-[[dependencies.${mod_id}]]
-    modId="minecraft"
-    mandatory=true
-    # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="${minecraft_version_range}"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.${mod_id}]]
-modId="geckolib" #mandatory
-mandatory=true #mandatory
-versionRange="[4.2,)" #mandatory
-ordering="NONE"
-side="BOTH"
-[[dependencies.${mod_id}]]
-modId="irons_spellbooks" #mandatory
-mandatory=true #mandatory
-versionRange="[1.20.1-3.0.0,1.20.1-4.0.0)" #mandatory
-ordering="NONE"
-side="BOTH"
-[[dependencies.${mod_id}]]
-modId="allthemodium" #mandatory
-mandatory=false #mandatory
-versionRange="[2.4.1,)" #mandatory
-ordering="NONE"
-side="BOTH"
+
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares
 # that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
 # stop your mod loading on the server for example.

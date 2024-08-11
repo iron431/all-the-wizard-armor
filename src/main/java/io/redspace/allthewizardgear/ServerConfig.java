@@ -1,19 +1,16 @@
 package io.redspace.allthewizardgear;
 
-import io.redspace.allthewizardgear.item.ExtendedArmorMaterials;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = AllTheWizardGear.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = AllTheWizardGear.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ServerConfig {
-    private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    static ForgeConfigSpec SPEC;
+    static ModConfigSpec SPEC;
 
     public static ArmorSetConfig ALLTHEMODIUM_CONFIG;
     public static ArmorSetConfig VIBRANIUM_CONFIG;
@@ -72,7 +69,7 @@ public class ServerConfig {
         SPEC = BUILDER.build();
     }
 
-    private static ArmorSetConfig defineConfig(ForgeConfigSpec.Builder builder, String name, List<Integer> defenseValues, int toughness, double knockbackResistance, int maxMana, double spellPower, double manaRegen,
+    private static ArmorSetConfig defineConfig(ModConfigSpec.Builder builder, String name, List<Integer> defenseValues, int toughness, double knockbackResistance, int maxMana, double spellPower, double manaRegen,
                                                boolean helmetPreventsDrowning,
                                                boolean helmetPreventsElytraDamage,
                                                boolean chestplatePreventsFire,
@@ -84,6 +81,7 @@ public class ServerConfig {
         builder.push(name);
         String localizedName = name.substring(0, 1).toUpperCase() + name.substring(1) + "'s ";
         var config = new ArmorSetConfig(
+                name,
                 builder.worldRestart().comment(localizedName + "Armor Values, in the form of [boots, leggings, chestplate, helmet]. Default: " + defenseValues).defineList("armorValues", () -> defenseValues, (x) -> true),
                 builder.worldRestart().comment(localizedName + "Armor Toughness. Default: " + toughness).define("toughness", toughness),
                 builder.worldRestart().comment(localizedName + "Knockback Resistance. Default: " + knockbackResistance).define("knockbackResistance", knockbackResistance),
@@ -104,20 +102,21 @@ public class ServerConfig {
     }
 
     public static record ArmorSetConfig(
-            ForgeConfigSpec.ConfigValue<List<? extends Integer>> defenseValues,
-            ForgeConfigSpec.ConfigValue<? extends Integer> toughness,
-            ForgeConfigSpec.ConfigValue<? extends Double> knockbackResistance,
-            ForgeConfigSpec.ConfigValue<? extends Integer> maxMana,
-            ForgeConfigSpec.ConfigValue<? extends Double> spellPower,
-            ForgeConfigSpec.ConfigValue<? extends Double> manaRegen,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> helmetPreventsDrowning,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> helmetPreventsElytraDamage,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> chestplatePreventsFire,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> chestplatePreventsDragonBreath,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> leggingsPreventWither,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> leggingsPreventLevitation,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> bootsPreventFallDamage,
-            ForgeConfigSpec.ConfigValue<? extends Boolean> makesPiglinsNeutral
+            String name,
+            ModConfigSpec.ConfigValue<List<? extends Integer>> defenseValues,
+            ModConfigSpec.ConfigValue<? extends Integer> toughness,
+            ModConfigSpec.ConfigValue<? extends Double> knockbackResistance,
+            ModConfigSpec.ConfigValue<? extends Integer> maxMana,
+            ModConfigSpec.ConfigValue<? extends Double> spellPower,
+            ModConfigSpec.ConfigValue<? extends Double> manaRegen,
+            ModConfigSpec.ConfigValue<? extends Boolean> helmetPreventsDrowning,
+            ModConfigSpec.ConfigValue<? extends Boolean> helmetPreventsElytraDamage,
+            ModConfigSpec.ConfigValue<? extends Boolean> chestplatePreventsFire,
+            ModConfigSpec.ConfigValue<? extends Boolean> chestplatePreventsDragonBreath,
+            ModConfigSpec.ConfigValue<? extends Boolean> leggingsPreventWither,
+            ModConfigSpec.ConfigValue<? extends Boolean> leggingsPreventLevitation,
+            ModConfigSpec.ConfigValue<? extends Boolean> bootsPreventFallDamage,
+            ModConfigSpec.ConfigValue<? extends Boolean> makesPiglinsNeutral
     ) {
         public double getDefenseFor(EquipmentSlot slot) {
             if (defenseValues.get().size() != 4) {
@@ -127,11 +126,11 @@ public class ServerConfig {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void onReload(ModConfigEvent.Reloading event) {
-        for (ExtendedArmorMaterials value : ExtendedArmorMaterials.values()) {
-            value.reload();
-        }
-    }
+//
+//    @SubscribeEvent
+//    public static void onReload(ModConfigEvent.Reloading event) {
+//        for (ExtendedArmorMaterials value : ExtendedArmorMaterials.values()) {
+//            value.reload();
+//        }
+//    }
 }
