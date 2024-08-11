@@ -1,7 +1,13 @@
 package io.redspace.allthewizardgear;
 
+import io.redspace.allthewizardgear.item.WizardArmorItem;
+import io.redspace.allthewizardgear.registry.ItemRegistry;
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
@@ -20,7 +26,7 @@ public class ServerConfig {
         BUILDER.push("ArmorConfig");
         BUILDER.comment("Changing armor values requires world restart");
 
-       ALLTHEMODIUM_CONFIG = defineConfig(BUILDER, "allthemodium",
+        ALLTHEMODIUM_CONFIG = defineConfig(BUILDER, "allthemodium",
                 List.of(4, 7, 9, 4),
                 4,
                 0,
@@ -34,7 +40,7 @@ public class ServerConfig {
                 false,
                 false,
                 true,
-               true);
+                true);
         VIBRANIUM_CONFIG = defineConfig(BUILDER, "vibranium",
                 List.of(6, 9, 11, 6),
                 5,
@@ -126,11 +132,13 @@ public class ServerConfig {
             }
         }
     }
-//
-//    @SubscribeEvent
-//    public static void onReload(ModConfigEvent.Reloading event) {
-//        for (ExtendedArmorMaterials value : ExtendedArmorMaterials.values()) {
-//            value.reload();
-//        }
-//    }
+
+    @SubscribeEvent
+    public static void onReload(ModConfigEvent.Reloading event) {
+        for (Holder<Item> item : ItemRegistry.items()) {
+            if (item.value() instanceof WizardArmorItem armorItem) {
+                armorItem.reload();
+            }
+        }
+    }
 }
