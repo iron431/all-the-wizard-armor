@@ -2,7 +2,6 @@ package io.redspace.allthewizardgear.events;
 
 import io.redspace.allthewizardgear.ServerConfig;
 import io.redspace.allthewizardgear.item.WizardArmorItem;
-import io.redspace.allthewizardgear.registry.ItemRegistry;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
