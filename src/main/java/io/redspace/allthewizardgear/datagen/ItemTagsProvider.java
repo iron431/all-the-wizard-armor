@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -20,7 +21,16 @@ public class ItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+
+        var builder = this.tag(ATWGTags.REMOVE_TRIM_ARMOR);
+        for (var item : io.redspace.allthewizardgear.registry.ItemRegistry.items()) {
+            if (item.get() instanceof ArmorItem) {
+                builder.remove(item.get());
+            }
+        }
+
         this.tag(ATWGTags.BASE_WIZARD_BOOTS)
+                .add(ItemRegistry.NETHERITE_MAGE_BOOTS.get())
                 .add(ItemRegistry.ARCHEVOKER_BOOTS.get())
                 .add(ItemRegistry.CRYOMANCER_BOOTS.get())
                 .add(ItemRegistry.CULTIST_BOOTS.get())
@@ -30,6 +40,7 @@ public class ItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.PYROMANCER_BOOTS.get())
                 .add(ItemRegistry.SHADOWWALKER_BOOTS.get());
         this.tag(ATWGTags.BASE_WIZARD_LEGGINGS)
+                .add(ItemRegistry.NETHERITE_MAGE_LEGGINGS.get())
                 .add(ItemRegistry.ARCHEVOKER_LEGGINGS.get())
                 .add(ItemRegistry.CRYOMANCER_LEGGINGS.get())
                 .add(ItemRegistry.CULTIST_LEGGINGS.get())
@@ -39,6 +50,7 @@ public class ItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.PYROMANCER_LEGGINGS.get())
                 .add(ItemRegistry.SHADOWWALKER_LEGGINGS.get());
         this.tag(ATWGTags.BASE_WIZARD_CHESTPLATE)
+                .add(ItemRegistry.NETHERITE_MAGE_CHESTPLATE.get())
                 .add(ItemRegistry.ARCHEVOKER_CHESTPLATE.get())
                 .add(ItemRegistry.CRYOMANCER_CHESTPLATE.get())
                 .add(ItemRegistry.CULTIST_CHESTPLATE.get())
@@ -48,6 +60,7 @@ public class ItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
                 .add(ItemRegistry.PYROMANCER_CHESTPLATE.get())
                 .add(ItemRegistry.SHADOWWALKER_CHESTPLATE.get());
         this.tag(ATWGTags.BASE_WIZARD_HELMET)
+                .add(ItemRegistry.NETHERITE_MAGE_HELMET.get())
                 .add(ItemRegistry.ARCHEVOKER_HELMET.get())
                 .add(ItemRegistry.CRYOMANCER_HELMET.get())
                 .add(ItemRegistry.CULTIST_HELMET.get())

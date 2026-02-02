@@ -17,9 +17,11 @@ public class ATWGTags {
     public static final TagKey<Item> ALLTHEMODIUM_INGOT = ItemTags.create(new ResourceLocation("forge:ingots/allthemodium"));
     public static final TagKey<Item> VIBRANIUM_INGOT = ItemTags.create(new ResourceLocation("forge:ingots/vibranium"));
     public static final TagKey<Item> UNOBTAINIUM_INGOT = ItemTags.create(new ResourceLocation("forge:ingots/unobtainium"));
-    public static final TagKey<Item> ALLTHEMODIUM_SMITHING_TEMPLATE = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID,"allthemodium_smithing"));
-    public static final TagKey<Item> VIBRANIUM_SMITHING_TEMPLATE = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID,"vibranium_smithing"));
-    public static final TagKey<Item> UNOBTANIUM_SMITHING_TEMPLATE = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID,"unobtainium_smithing"));
+    public static final TagKey<Item> ALLTHEMODIUM_SMITHING_TEMPLATE = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID, "allthemodium_smithing"));
+    public static final TagKey<Item> VIBRANIUM_SMITHING_TEMPLATE = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID, "vibranium_smithing"));
+    public static final TagKey<Item> UNOBTANIUM_SMITHING_TEMPLATE = ItemTags.create(new ResourceLocation(AllTheWizardGear.MODID, "unobtainium_smithing"));
+
+    public static final TagKey<Item> REMOVE_TRIM_ARMOR = ItemTags.create(ResourceLocation.withDefaultNamespace("trimmable_armor"));
 
 
 }
