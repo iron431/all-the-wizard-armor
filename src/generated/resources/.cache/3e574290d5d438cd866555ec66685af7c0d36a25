@@ -1,5 +1,6 @@
-// 1.21.1	2026-02-01T19:35:09.5727814	Tags for minecraft:item mod id allthewizardgear
+// 1.21.1	2026-02-01T20:25:47.1743428	Tags for minecraft:item mod id allthewizardgear
 e8cea48a70e6c2038957717f9cb015146965b5e5 data/allthewizardgear/tags/item/base_wizard_boots.json
 19c6bbf8efe08649e98ac9de40cadcc183f77d30 data/allthewizardgear/tags/item/base_wizard_chestplate.json
 8f609299cdb69bae68e140e11129d2797ab2677a data/allthewizardgear/tags/item/base_wizard_helmet.json
 a508c2e73cb622319d284c33ad10af5a6fdb8bdb data/allthewizardgear/tags/item/base_wizard_leggings.json
+405cb5e33f5f2f7efc81f4b4d72f4249fb8df1af data/minecraft/tags/item/trimmable_armor.json

@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -21,6 +22,14 @@ public class ItemTagsProvider extends IntrinsicHolderTagsProvider<Item> {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+
+        var builder = this.tag(ATWGTags.REMOVE_TRIM_ARMOR);
+        for (var item : io.redspace.allthewizardgear.registry.ItemRegistry.items()) {
+            if (item.get() instanceof ArmorItem) {
+                builder.remove(item.get());
+            }
+        }
+
         this.tag(ATWGTags.BASE_WIZARD_BOOTS)
                 .add(ItemRegistry.NETHERITE_MAGE_BOOTS.get())
                 .add(ItemRegistry.ARCHEVOKER_BOOTS.get())

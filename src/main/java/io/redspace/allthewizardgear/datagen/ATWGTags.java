@@ -21,5 +21,7 @@ public class ATWGTags {
     public static final TagKey<Item> VIBRANIUM_SMITHING_TEMPLATE = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AllTheWizardGear.MODID,"vibranium_smithing"));
     public static final TagKey<Item> UNOBTANIUM_SMITHING_TEMPLATE = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AllTheWizardGear.MODID,"unobtainium_smithing"));
 
+    public static final TagKey<Item> REMOVE_TRIM_ARMOR = ItemTags.create(ResourceLocation.withDefaultNamespace("trimmable_armor"));
+
 
 }
