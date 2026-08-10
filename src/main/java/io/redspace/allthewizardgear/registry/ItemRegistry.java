@@ -1,7 +1,7 @@
 package io.redspace.allthewizardgear.registry;
 
 import io.redspace.allthewizardgear.AllTheWizardGear;
-import io.redspace.allthewizardgear.ServerConfig;
+import io.redspace.allthewizardgear.StartupConfig;
 import io.redspace.allthewizardgear.datagen.ItemModelDataGenerator;
 import io.redspace.allthewizardgear.item.CooldownCastTimeSpellBook;
 import io.redspace.allthewizardgear.item.WizardArmorItem;
@@ -22,20 +22,20 @@ public class ItemRegistry {
         ITEMS.register(eventBus);
     }
 
-    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_HELMET = generateItem("allthemodium_mage_helmet", () -> new WizardArmorItem(() -> ServerConfig.ALLTHEMODIUM_CONFIG, ArmorItem.Type.HELMET));
-    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_CHESTPLATE = generateItem("allthemodium_mage_chestplate", () -> new WizardArmorItem(() -> ServerConfig.ALLTHEMODIUM_CONFIG, ArmorItem.Type.CHESTPLATE));
-    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_LEGGINGS = generateItem("allthemodium_mage_leggings", () -> new WizardArmorItem(() -> ServerConfig.ALLTHEMODIUM_CONFIG, ArmorItem.Type.LEGGINGS));
-    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_BOOTS = generateItem("allthemodium_mage_boots", () -> new WizardArmorItem(() -> ServerConfig.ALLTHEMODIUM_CONFIG, ArmorItem.Type.BOOTS));
+    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_HELMET = generateItem("allthemodium_mage_helmet", () -> new WizardArmorItem(StartupConfig::allthemodium, ArmorItem.Type.HELMET));
+    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_CHESTPLATE = generateItem("allthemodium_mage_chestplate", () -> new WizardArmorItem(StartupConfig::allthemodium, ArmorItem.Type.CHESTPLATE));
+    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_LEGGINGS = generateItem("allthemodium_mage_leggings", () -> new WizardArmorItem(StartupConfig::allthemodium, ArmorItem.Type.LEGGINGS));
+    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MAGE_BOOTS = generateItem("allthemodium_mage_boots", () -> new WizardArmorItem(StartupConfig::allthemodium, ArmorItem.Type.BOOTS));
 
-    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_HELMET = generateItem("vibranium_mage_helmet", () -> new WizardArmorItem(() -> ServerConfig.VIBRANIUM_CONFIG, ArmorItem.Type.HELMET));
-    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_CHESTPLATE = generateItem("vibranium_mage_chestplate", () -> new WizardArmorItem(() -> ServerConfig.VIBRANIUM_CONFIG, ArmorItem.Type.CHESTPLATE));
-    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_LEGGINGS = generateItem("vibranium_mage_leggings", () -> new WizardArmorItem(() -> ServerConfig.VIBRANIUM_CONFIG, ArmorItem.Type.LEGGINGS));
-    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_BOOTS = generateItem("vibranium_mage_boots", () -> new WizardArmorItem(() -> ServerConfig.VIBRANIUM_CONFIG, ArmorItem.Type.BOOTS));
+    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_HELMET = generateItem("vibranium_mage_helmet", () -> new WizardArmorItem(StartupConfig::vibranium, ArmorItem.Type.HELMET));
+    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_CHESTPLATE = generateItem("vibranium_mage_chestplate", () -> new WizardArmorItem(StartupConfig::vibranium, ArmorItem.Type.CHESTPLATE));
+    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_LEGGINGS = generateItem("vibranium_mage_leggings", () -> new WizardArmorItem(StartupConfig::vibranium, ArmorItem.Type.LEGGINGS));
+    public static final DeferredHolder<Item, Item> VIBRANIUM_MAGE_BOOTS = generateItem("vibranium_mage_boots", () -> new WizardArmorItem(StartupConfig::vibranium, ArmorItem.Type.BOOTS));
 
-    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_HELMET = generateItem("unobtainium_mage_helmet", () -> new WizardArmorItem(() -> ServerConfig.UNOBTAINIUM_CONFIG, ArmorItem.Type.HELMET));
-    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_CHESTPLATE = generateItem("unobtainium_mage_chestplate", () -> new WizardArmorItem(() -> ServerConfig.UNOBTAINIUM_CONFIG, ArmorItem.Type.CHESTPLATE));
-    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_LEGGINGS = generateItem("unobtainium_mage_leggings", () -> new WizardArmorItem(() -> ServerConfig.UNOBTAINIUM_CONFIG, ArmorItem.Type.LEGGINGS));
-    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_BOOTS = generateItem("unobtainium_mage_boots", () -> new WizardArmorItem(() -> ServerConfig.UNOBTAINIUM_CONFIG, ArmorItem.Type.BOOTS));
+    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_HELMET = generateItem("unobtainium_mage_helmet", () -> new WizardArmorItem(StartupConfig::unobtainium, ArmorItem.Type.HELMET));
+    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_CHESTPLATE = generateItem("unobtainium_mage_chestplate", () -> new WizardArmorItem(StartupConfig::unobtainium, ArmorItem.Type.CHESTPLATE));
+    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_LEGGINGS = generateItem("unobtainium_mage_leggings", () -> new WizardArmorItem(StartupConfig::unobtainium, ArmorItem.Type.LEGGINGS));
+    public static final DeferredHolder<Item, Item> UNOBTAINIUM_MAGE_BOOTS = generateItem("unobtainium_mage_boots", () -> new WizardArmorItem(StartupConfig::unobtainium, ArmorItem.Type.BOOTS));
 
     public static final DeferredHolder<Item, Item> ALLTHEMODIUM_SPELLBOOK = generateSpellBook("allthemodium_spell_book", () -> new CooldownCastTimeSpellBook(13, .3, .15));
     public static final DeferredHolder<Item, Item> VIBRANIUM_SPELLBOOK = generateSpellBook("vibranium_spell_book", () -> new CooldownCastTimeSpellBook(14, .4, .25));

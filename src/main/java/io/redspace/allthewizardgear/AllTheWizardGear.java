@@ -39,7 +39,7 @@ public class AllTheWizardGear
         modEventBus.addListener(CreativeTabRegistry::fillCreativeTab);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.STARTUP, StartupConfig.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

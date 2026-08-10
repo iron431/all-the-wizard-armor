@@ -1,7 +1,7 @@
 package io.redspace.allthewizardgear.item;
 
 import io.redspace.allthewizardgear.AllTheWizardGear;
-import io.redspace.allthewizardgear.ServerConfig;
+import io.redspace.allthewizardgear.StartupConfig;
 import io.redspace.allthewizardgear.client.armor.GenericArmorModel;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer;
@@ -59,27 +59,27 @@ public class WizardArmorItem extends ArmorItem implements GeoItem, IPresetSpellC
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     //Shadowing
-    private final Supplier<ServerConfig.ArmorSetConfig> config;
+    private final Supplier<StartupConfig.ArmorSetData> config;
     private Cache<ItemAttributeModifiers> defaultModifiers;
 
-    public WizardArmorItem(Supplier<ServerConfig.ArmorSetConfig> config, Type type) {
+    public WizardArmorItem(Supplier<StartupConfig.ArmorSetData> config, Type type) {
         this(config, type, Rarity.EPIC);
     }
 
-    public WizardArmorItem(Supplier<ServerConfig.ArmorSetConfig> config, Type type, Rarity rarity) {
+    public WizardArmorItem(Supplier<StartupConfig.ArmorSetData> config, Type type, Rarity rarity) {
         super(ArmorMaterialRegistry.SCHOOL, type, new Properties().stacksTo(1).fireResistant().rarity(rarity));
         this.config = config;
         this.defaultModifiers = new Cache<>(() -> makeAttributeMap(config.get(), type.getSlot()));
     }
 
-    private ItemAttributeModifiers makeAttributeMap(ServerConfig.ArmorSetConfig config, EquipmentSlot slot) {
+    private ItemAttributeModifiers makeAttributeMap(StartupConfig.ArmorSetData config, EquipmentSlot slot) {
         ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
         double defense = config.getDefenseFor(slot);
-        double toughness = config.toughness().get();
-        double knockbackResistance = config.knockbackResistance().get();
-        double maxMana = config.maxMana().get();
-        double power = config.spellPower().get();
-        double manaRegen = config.manaRegen().get();
+        double toughness = config.toughness();
+        double knockbackResistance = config.knockbackResistance();
+        double maxMana = config.maxMana();
+        double power = config.spellPower();
+        double manaRegen = config.manaRegen();
         ResourceLocation resourcelocation = ResourceLocation.fromNamespaceAndPath(AllTheWizardGear.MODID, "armor." + slot.getName());
         EquipmentSlotGroup equipmentslotgroup = EquipmentSlotGroup.bySlot(slot);
 
@@ -112,10 +112,10 @@ public class WizardArmorItem extends ArmorItem implements GeoItem, IPresetSpellC
 
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-        return this.config.get().makesPiglinsNeutral().get();
+        return this.config.get().makesPiglinsNeutral();
     }
 
-    public ServerConfig.ArmorSetConfig getConfig() {
+    public StartupConfig.ArmorSetData getConfig() {
         return this.config.get();
     }
 
